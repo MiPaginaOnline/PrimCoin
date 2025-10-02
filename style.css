@@ -37,87 +37,19 @@ body {
 .brand { font-weight:700; font-size:1.2rem; color:var(--accent); text-decoration:none; }
 .main-nav a { margin-left:1rem; text-decoration:none; color:var(--muted); font-weight:500; }
 
-/* --- ESTILOS DEL BANNER PRINCIPAL (HERO) --- */
-.hero-banner {
-    position: relative; /* Esencial para posicionar el overlay y la imagen */
-    width: 100%;
-    height: 450px; /* Altura del banner. Ajústala si lo necesitas más alto o bajo. */
-    overflow: hidden;
-    display: flex;
-    align-items: center; /* Centra verticalmente el contenido */
-    justify-content: center; /* Centra horizontalmente el contenido */
-    text-align: center;
-    margin-bottom: 50px;
+/* Hero Banner */
+.hero-banner { position:relative; width:100%; height:60vh; min-height:380px; overflow:hidden; }
+.hero-img { width:100%; height:100%; object-fit:cover; display:block; }
+.hero-overlay {
+  position:absolute; inset:0;
+  background:rgba(0,0,0,0.45);
+  display:flex; flex-direction:column; justify-content:center; align-items:center;
+  text-align:center; color:#fff; padding:1rem;
 }
+.hero-overlay h1 { font-size:clamp(1.8rem,4vw,2.5rem); margin-bottom:.5rem; }
+.hero-overlay p { font-size:1.1rem; margin-bottom:1rem; color:#f3f4f6; }
+.btn-hero { background:var(--accent); color:#fff; padding:.75rem 1.25rem; border-radius:var(--radius); font-weight:600; text-decoration:none; }
 
-.hero-banner .banner-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Asegura que la imagen cubra todo el área sin distorsionarse */
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1; /* Capa inferior (la imagen) */
-}
-
-/* CLAVE: CAPA OSCURA (OVERLAY) */
-.hero-banner .banner-overlay {
-    position: absolute; 
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* Negro con 40% de opacidad (0.4). Cámbialo a 0.6 o 0.7 si quieres más oscuro. */
-    background-color: rgba(0, 0, 0, 0.4); 
-    z-index: 2; /* Capa media (la oscuridad) */
-}
-
-.hero-banner .banner-content {
-    position: relative; 
-    z-index: 3; /* Capa superior (el texto) */
-    color: white;
-    padding: 20px;
-    max-width: 800px;
-}
-
-.hero-banner h2 {
-    font-size: 3em;
-    margin-bottom: 15px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Ayuda a que el texto blanco resalte */
-}
-
-.hero-banner p {
-    font-size: 1.3em;
-    margin-bottom: 25px;
-}
-
-/* Estilo del botón de acción */
-.btn-primary {
-    display: inline-block;
-    padding: 12px 30px;
-    background-color: #e74c3c; 
-    color: white;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: background-color 0.3s;
-}
-
-.btn-primary:hover {
-    background-color: #c0392b;
-}
-
-/* RESPONSIVIDAD BÁSICA DEL BANNER */
-@media (max-width: 768px) {
-    .hero-banner {
-        height: 350px;
-    }
-    .hero-banner h2 {
-        font-size: 2em;
-    }
-    .hero-banner p {
-        font-size: 1em;
-    }
-}
 /* Section */
 .section-title { font-size:1.5rem; margin:2rem 0 1rem; color:var(--bg-dark); }
 
