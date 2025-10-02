@@ -6,7 +6,7 @@
 * { box-sizing: border-box; margin:0; padding:0; }
 body {
   font-family: 'Inter', system-ui, sans-serif;
-  background: #f4f6f9; /* Fondo gris azulado suave */
+  background: #f4f6f9;
   color:#111;
   line-height:1.5;
 }
@@ -74,10 +74,11 @@ body {
   transition:transform .3s ease;
 }
 .product-card:hover img { transform:scale(1.05); }
-.product-info { padding:1rem; display:flex; justify-content:space-between; align-items:center; }
+.product-info { padding:1rem; display:flex; flex-direction:column; gap:0.5rem; }
 .product-title { font-size:1rem; color:var(--bg-dark); margin:0; }
-.product-price { text-align:right; }
-.price { font-weight:700; }
+.product-price { font-weight:700; text-align:right; }
+
+/* Precios */
 .price-discount { font-weight:700; color:var(--accent); margin-right:.4rem; }
 .price-original { text-decoration:line-through; color:var(--muted); font-size:.9rem; }
 
