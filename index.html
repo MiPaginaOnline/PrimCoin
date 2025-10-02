@@ -397,66 +397,85 @@ Semantic tags + accessibility attributes
 </div>
 </section>
 
-<!-- Product section -->
-<section aria-labelledby="featured-title" style="margin-top:1.25rem;">
-<div class="section-title">
-<h2 id="featured-title" style="margin:0">Productos destacados</h2>
-<a href="#" class="small" aria-label="Ver todo el catálogo">Ver todo →</a>
+<main>
+<div class="container">
+<!-- Carousel -->
+<section class="carousel" id="carousel">
+<div class="slides" id="slides">
+<div class="slide">
+<div>
+<h1>Fundas premium — protección con estilo</h1>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+<a href="https://primcoin.myshopify.com/products/funda-premium-grafito" class="btn">Comprar ahora</a>
+</div>
+<img src="https://picsum.photos/seed/p1/1200/600" alt="Funda premium" />
+</div>
+<div class="slide">
+<div>
+<h1>Accesorios inalámbricos</h1>
+<p>Calidad y compatibilidad garantizada.</p>
+<a href="https://primcoin.myshopify.com/products/accesorios-inalambricos" class="btn">Explorar accesorios</a>
+</div>
+<img src="https://picsum.photos/seed/p2/1200/600" alt="Accesorios" />
+</div>
+</div>
+<button class="carousel-btn left" id="prev">&larr;</button>
+<button class="carousel-btn right" id="next">&rarr;</button>
+<div class="carousel-controls" id="dots"></div>
+</section>
+
+<!-- Banners -->
+<div class="banners">
+<div class="banner"><strong>Promoción: 20% descuento</strong><p class="small">Código: PRIM20</p></div>
+<div class="banner"><strong>Pago seguro</strong><p class="small">Tarjeta, PayPal, cuotas</p></div>
+<div class="banner"><strong>Soporte 24/7</strong><p class="small">Atención inmediata</p></div>
 </div>
 
-<div class="products-grid" id="products" aria-live="polite">
-<!-- Product card repeated (placeholder content) -->
-<!-- Example product -->
-<article class="product" tabindex="0" aria-label="Funda premium - Producto ejemplo">
-<img src="https://picsum.photos/seed/item1/600/400" alt="Funda premium color grafito" />
-<div class="meta">
-<div class="title">Funda Premium Grafito</div>
-<div class="price">€11,99 <span style="text-decoration:line-through;color:#9ca3af;font-weight:500;margin-left:6px">€14,99</span></div>
-<div class="small">Entrega en 2-4 días</div>
+<!-- Productos -->
+<section>
+<div class="section-title">
+<h2>Productos destacados</h2>
+<a href="https://primcoin.myshopify.com/collections/all" class="small">Ver todo →</a>
 </div>
+<div class="products-grid">
+<!-- Producto 1 -->
+<article class="product">
+<img src="https://picsum.photos/seed/item1/600/400" alt="Funda premium grafito" />
+<div class="title">Funda Premium Grafito</div>
+<div class="price">€11,99</div>
 <div class="actions">
-<button class="btn add-to-cart" data-product-id="p1" aria-label="Añadir Funda Premium Grafito al carrito">Añadir al carrito</button>
-<button class="btn secondary" aria-label="Ver detalles">Ver</button>
+<a href="https://primcoin.myshopify.com/products/funda-premium-grafito" class="btn">Comprar ahora</a>
+<a href="https://primcoin.myshopify.com/products/funda-premium-grafito" class="btn secondary">Ver detalles</a>
 </div>
 </article>
-
-<!-- Copy/paste a few more -->
-<article class="product" tabindex="0" aria-label="Funda magnética - Producto ejemplo">
+<!-- Producto 2 -->
+<article class="product">
 <img src="https://picsum.photos/seed/item2/600/400" alt="Funda magnética transparente" />
-<div class="meta">
 <div class="title">Funda Magnética Transparente</div>
 <div class="price">€9,99</div>
-<div class="small">Compatibilidad: iPhone / Android</div>
-</div>
 <div class="actions">
-<button class="btn add-to-cart" data-product-id="p2">Añadir al carrito</button>
-<button class="btn secondary">Ver</button>
+<a href="https://primcoin.myshopify.com/products/funda-magnetica-transparente" class="btn">Comprar ahora</a>
+<a href="https://primcoin.myshopify.com/products/funda-magnetica-transparente" class="btn secondary">Ver detalles</a>
 </div>
 </article>
-
-<article class="product" tabindex="0" aria-label="Funda de cuero - Producto ejemplo">
-<img src="https://picsum.photos/seed/item3/600/400" alt="Funda de cuero marrón" />
-<div class="meta">
+<!-- Producto 3 -->
+<article class="product">
+<img src="https://picsum.photos/seed/item3/600/400" alt="Funda cuero marrón" />
 <div class="title">Funda Cuero Business</div>
 <div class="price">€14,99</div>
-<div class="small">Toque premium y protección</div>
-</div>
 <div class="actions">
-<button class="btn add-to-cart" data-product-id="p3">Añadir al carrito</button>
-<button class="btn secondary">Ver</button>
+<a href="https://primcoin.myshopify.com/products/funda-cuero-business" class="btn">Comprar ahora</a>
+<a href="https://primcoin.myshopify.com/products/funda-cuero-business" class="btn secondary">Ver detalles</a>
 </div>
 </article>
-
-<article class="product" tabindex="0" aria-label="Soporte de anillo - Producto ejemplo">
-<img src="https://picsum.photos/seed/item4/600/400" alt="Soporte anular para móvil" />
-<div class="meta">
+<!-- Producto 4 -->
+<article class="product">
+<img src="https://picsum.photos/seed/item4/600/400" alt="Soporte anillo" />
 <div class="title">Soporte Anillo Metal</div>
 <div class="price">€6,99</div>
-<div class="small">Ideal para selfies y agarre</div>
-</div>
 <div class="actions">
-<button class="btn add-to-cart" data-product-id="p4">Añadir al carrito</button>
-<button class="btn secondary">Ver</button>
+<a href="https://primcoin.myshopify.com/products/soporte-anillo-metal" class="btn">Comprar ahora</a>
+<a href="https://primcoin.myshopify.com/products/soporte-anillo-metal" class="btn secondary">Ver detalles</a>
 </div>
 </article>
 </div>
