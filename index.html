@@ -1,49 +1,59 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>PrimCoin — Catálogo de Fundas</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PrimCoin — Catálogo</title>
+  <meta name="description" content="Catálogo estático de fundas y accesorios - versión estática inspirada en primcoin.myshopify.com" />
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header class="site-header">
-  <div class="container header-inner">
-    <a class="brand" href="#">PrimCoin</a>
-    <nav class="main-nav">
-      <a href="#">Inicio</a>
-      <a href="#catalogo">Catálogo</a>
-      <a href="https://primcoin.myshopify.com/" target="_blank">Shopify</a>
-    </nav>
-  </div>
-</header>
-
-<!-- Banner Principal -->
-<section class="banner">
-  <img src="assets/banner-fundas.jpg" alt="Banner Fundas de Móviles" class="banner-img">
-  <div class="banner-text">
-    <h1>Fundas de Móviles Premium</h1>
-    <p>Protección y estilo para todos los modelos</p>
-  </div>
-</section>
-
-<!-- Catálogo de Productos -->
-<main class="container">
-  <section id="catalogo" class="product-grid">
-
-    <!-- Producto 1 -->
-    <div class="product-card">
-      <a href="producto-f1-colapinto-plateada.html">
-        <img src="assets/prod1.jpg" alt="F1 Colapinto Plateada">
-        <h2>F1 Colapinto Plateada</h2>
-        <div class="price">
-          <span class="current-price">€9,99</span>
-          <span class="old-price">€14,99</span>
-        </div>
-      </a>
+  <!-- Header fijo -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">PrimCoin</a>
+      <nav class="main-nav" aria-label="Navegación principal">
+        <a href="index.html">Inicio</a>
+        <a href="#catalogo">Catálogo</a>
+        <a href="https://primcoin.myshopify.com/" target="_blank" rel="noopener">Shopify</a>
+      </nav>
     </div>
+  </header>
 
-    <!-- Producto 2 -->
+  <main>
+    <!-- Banner Hero Principal -->
+    <section class="hero-banner">
+      <img src="assets/banner-fundas.jpg" alt="Fundas de móviles de alta calidad" class="hero-img">
+      <div class="hero-overlay">
+        <h1>Fundas que Protegen y Estilo que Inspira</h1>
+        <p>Descubre nuestra colección exclusiva</p>
+        <a class="btn btn-hero" href="#catalogo">Ver Catálogo</a>
+      </div>
+    </section>
+
+    <!-- Catálogo -->
+    <section id="catalogo" class="container catalog-section">
+      <h2 class="section-title">Catálogo de Productos</h2>
+
+      <ul class="product-grid" role="list">
+        <!-- Ejemplo producto -->
+        <li class="product-card">
+          <a class="product-link" href="producto-f1-colapinto.html">
+            <div class="product-media">
+              <!-- REEMPLAZAR: con imagen real -->
+              <img class="lazy" data-src="assets/placeholder-1.jpg" alt="F1 Colapinto Plateada" loading="lazy">
+            </div>
+            <div class="product-info">
+              <h3 class="product-title">F1 Colapinto Plateada</h3>
+              <div class="product-price">
+                <span class="price-discount">€9,99</span>
+                <span class="price-original">€14,99</span>
+              </div>
+            </div>
+          </a>
+        </li>
+
+        <!-- Producto 2 -->
     <div class="product-card">
       <a href="producto-f2-iphone-neon-pink.html">
         <img src="assets/prod2.jpg" alt="iPhone Neon Pink">
