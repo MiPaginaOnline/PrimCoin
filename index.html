@@ -1,257 +1,311 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>PrimCoin — Catálogo</title>
-  <meta name="description" content="Catálogo estático de fundas y accesorios - versión estática inspirada en primcoin.myshopify.com" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>PrimCoin — Catálogo de Fundas</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Header fijo -->
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="index.html">PrimCoin</a>
-      <nav class="main-nav" aria-label="Navegación principal">
-        <a href="index.html">Inicio</a>
-        <a href="#catalogo">Catálogo</a>
-        <a href="https://primcoin.myshopify.com/" target="_blank" rel="noopener">Shopify</a>
-      </nav>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="#">PrimCoin</a>
+    <nav class="main-nav">
+      <a href="#">Inicio</a>
+      <a href="#catalogo">Catálogo</a>
+      <a href="https://primcoin.myshopify.com/" target="_blank">Shopify</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Banner Principal -->
+<section class="banner">
+  <img src="assets/banner-fundas.jpg" alt="Banner Fundas de Móviles" class="banner-img">
+  <div class="banner-text">
+    <h1>Fundas de Móviles Premium</h1>
+    <p>Protección y estilo para todos los modelos</p>
+  </div>
+</section>
+
+<!-- Catálogo de Productos -->
+<main class="container">
+  <section id="catalogo" class="product-grid">
+
+    <!-- Producto 1 -->
+    <div class="product-card">
+      <a href="producto-f1-colapinto-plateada.html">
+        <img src="assets/prod1.jpg" alt="F1 Colapinto Plateada">
+        <h2>F1 Colapinto Plateada</h2>
+        <div class="price">
+          <span class="current-price">€9,99</span>
+          <span class="old-price">€14,99</span>
+        </div>
+      </a>
     </div>
-  </header>
 
-  <main>
-    <!-- Banner Hero Principal -->
-    <section class="hero-banner">
-      <img src="assets/banner-fundas.jpg" alt="Fundas de móviles de alta calidad" class="hero-img">
-      <div class="hero-overlay">
-        <h1>Fundas que Protegen y Estilo que Inspira</h1>
-        <p>Descubre nuestra colección exclusiva</p>
-        <a class="btn btn-hero" href="#catalogo">Ver Catálogo</a>
-      </div>
-    </section>
+    <!-- Producto 2 -->
+    <div class="product-card">
+      <a href="producto-f2-iphone-neon-pink.html">
+        <img src="assets/prod2.jpg" alt="iPhone Neon Pink">
+        <h2>iPhone Neon Pink</h2>
+        <div class="price">
+          <span class="current-price">€9,99</span>
+          <span class="old-price">€14,99</span>
+        </div>
+      </a>
+    </div>
 
-    <!-- Catálogo -->
-    <section id="catalogo" class="container catalog-section">
-      <h2 class="section-title">Catálogo de Productos</h2>
+    <!-- Producto 3 -->
+    <div class="product-card">
+      <a href="producto-f3-samsung-galaxy-blue.html">
+        <img src="assets/prod3.jpg" alt="Samsung Galaxy Blue">
+        <h2>Samsung Galaxy Blue</h2>
+        <div class="price">
+          <span class="current-price">€9,99</span>
+          <span class="old-price">€14,99</span>
+        </div>
+      </a>
+    </div>
 
-      <ul class="product-grid" role="list">
-        <!-- Ejemplo producto -->
-        <li class="product-card">
-          <a class="product-link" href="producto-f1-colapinto.html">
-            <div class="product-media">
-              <!-- REEMPLAZAR: con imagen real -->
-              <img class="lazy" data-src="assets/placeholder-1.jpg" alt="F1 Colapinto Plateada" loading="lazy">
-            </div>
-            <div class="product-info">
-              <h3 class="product-title">F1 Colapinto Plateada</h3>
-              <div class="product-price">
-                <span class="price-discount">€9,99</span>
-                <span class="price-original">€14,99</span>
-              </div>
-            </div>
-          </a>
-        </li>
+    <!-- Producto 4 -->
+    <div class="product-card">
+      <a href="producto-f4-oppo-shockproof-case.html">
+        <img src="assets/prod4.jpg" alt="OPPO Shockproof Case">
+        <h2>OPPO Shockproof Case</h2>
+        <div class="price">
+          <span class="current-price">€11,99</span>
+          <span class="old-price">€14,99</span>
+        </div>
+      </a>
+    </div>
 
-                <!-- Producto 2 -->
-        <li class="product-card">
-          <a class="product-link" href="producto-funda-cuero-xiaomi.html">
-            <div class="product-media">
-              <img class="lazy" data-src="assets/placeholder-2.jpg" alt="Funda de Cuero Premium Xiaomi" loading="lazy">
-            </div>
-            <div class="product-info">
-              <h3 class="product-title">Funda de Cuero Premium Xiaomi</h3>
-              <div class="product-price">
-                <span class="price-discount">€11,99</span>
-                <span class="price-original">€14,99</span>
-              </div>
-            </div>
-          </a>
-        </li>
+    <!-- Producto 5 -->
+    <div class="product-card">
+      <a href="producto-f5-xiaomi-mi-12.html">
+        <img src="assets/prod5.jpg" alt="Xiaomi Mi 12">
+        <h2>Xiaomi Mi 12</h2>
+        <div class="price">
+          <span class="current-price">€10,99</span>
+          <span class="old-price">€14,99</span>
+        </div>
+      </a>
+    </div>
 
-        <!-- Producto 3 -->
-        <li class="product-card">
-          <a class="product-link" href="producto-funda-magnetica-iphone.html">
-            <div class="product-media">
-              <img class="lazy" data-src="assets/placeholder-3.jpg" alt="Funda Magnética con Carga Inalámbrica – iPhone" loading="lazy">
-            </div>
-            <div class="product-info">
-              <h3 class="product-title">Funda Magnética con Carga Inalámbrica – iPhone</h3>
-              <div class="product-price">
-                <span class="price-discount">€11,99</span>
-                <span class="price-original">€15,00</span>
-              </div>
-            </div>
-          </a>
-        </li>
+    <!-- Producto 6 -->
+    <div class="product-card">
+      <a href="producto-f6-redmi-note-11.html">
+        <img src="assets/prod6.jpg" alt="Redmi Note 11">
+        <h2>Redmi Note 11</h2>
+        <div class="price">
+          <span class="current-price">€10,99</span>
+          <span class="old-price">€14,99</span>
+        </div>
+      </a>
+    </div>
 
-        <!-- Producto 4 -->
-        <li class="product-card">
-          <a class="product-link" href="producto-funda-magnetica-xiaomi-14c.html">
-            <div class="product-media">
-              <img class="lazy" data-src="assets/placeholder-4.jpg" alt="Funda Magnética Xiaomi Redmi 14C – Soft Case" loading="lazy">
-            </div>
-            <div class="product-info">
-              <h3 class="product-title">Funda Magnética Xiaomi Redmi 14C – Soft Case</h3>
-              <div class="product-price">
-                <span class="price-discount">€11,99</span>
-                <span class="price-original">€14,99</span>
-              </div>
-            </div>
-          </a>
-        </li>
+    <!-- Producto 7 -->
+    <div class="product-card">
+      <a href="producto-f7-samsung-silver-smile-cheeks.html">
+        <img src="assets/prod7.jpg" alt="Samsung Silver Smile Cheeks">
+        <h2>Samsung Silver Smile Cheeks</h2>
+        <div class="price">
+          <span class="current-price">€9,99</span>
+          <span class="old-price">€14,99</span>
+        </div>
+      </a>
+    </div>
 
-        <!-- Producto 5 -->
-        <li class="product-card">
-          <a class="product-link" href="producto-funda-oppo-reno14f.html">
-            <div class="product-media">
-              <img class="lazy" data-src="assets/placeholder-5.jpg" alt="Funda OPPO Reno14F 5G – Transparente" loading="lazy">
-            </div>
-            <div class="product-info">
-              <h3 class="product-title">Funda OPPO Reno14F 5G – Transparente</h3>
-              <div class="product-price">
-                <span class="price-discount">€11,99</span>
-                <span class="price-original">€14,99</span>
-              </div>
-            </div>
-          </a>
-        </li>
+    <!-- Producto 8 -->
+    <div class="product-card">
+      <a href="producto-f8-iphone-wave-macaron.html">
+        <img src="assets/prod8.jpg" alt="iPhone Wave Macaron">
+        <h2>iPhone Wave Macaron</h2>
+        <div class="price">
+          <span class="current-price">€9,99</span>
+          <span class="old-price">€14,99</span>
+        </div>
+      </a>
+    </div>
 
-        <!-- Producto 6 -->
-        <li class="product-card">
-          <a class="product-link" href="producto-funda-soft-case-anime.html">
-            <div class="product-media">
-              <img class="lazy" data-src="assets/placeholder-6.jpg" alt="Funda Soft Case Xiaomi / Redmi – Comics, Anime" loading="lazy">
-            </div>
-            <div class="product-info">
-              <h3 class="product-title">Funda Soft Case Xiaomi / Redmi – Comics, Anime</h3>
-              <div class="product-price">
-                <span class="price">€9,99</span>
-              </div>
-            </div>
-          </a>
-        </li>
+    <!-- Producto 9 -->
+    <div class="product-card">
+      <a href="producto-f9-y2k-batman-spiderman.html">
+        <img src="assets/prod9.jpg" alt="Y2K Batman Spiderman">
+        <h2>Y2K Batman Spiderman</h2>
+        <div class="price">
+          <span class="current-price">€9,99</span>
+          <span class="old-price">€14,99</span>
+        </div>
+      </a>
+    </div>
 
-        <!-- Producto 7 -->
-        <li class="product-card">
-          <a class="product-link" href="producto-funda-batman-iphone.html">
-            <div class="product-media">
-              <img class="lazy" data-src="assets/placeholder-7.jpg" alt="Funda Transparente Logo Batman para iPhone" loading="lazy">
-            </div>
-            <div class="product-info">
-              <h3 class="product-title">Funda Transparente Logo Batman para iPhone</h3>
-              <div class="product-price">
-                <span class="price">€9,99</span>
-              </div>
-            </div>
-          </a>
-        </li>
+    <!-- Producto 10 -->
+    <div class="product-card">
+      <a href="producto-f10-oppo-reno14f-transparente.html">
+        <img src="assets/prod10.jpg" alt="OPPO Reno14F Transparente">
+        <h2>OPPO Reno14F Transparente</h2>
+        <div class="price">
+          <span class="current-price">€11,99</span>
+          <span class="old-price">€14,99</span>
+        </div>
+      </a>
+    </div>
 
-        <!-- Producto 8 -->
-        <li class="product-card">
-          <a class="product-link" href="producto-funda-placa-lujo-iphone.html">
-            <div class="product-media">
-              <img class="lazy" data-src="assets/placeholder-8.jpg" alt="Funda Transparente con Placa de Lujo y Carga" loading="lazy">
-            </div>
-            <div class="product-info">
-              <h3 class="product-title">Funda Transparente con Placa de Lujo</h3>
-              <div class="product-price">
-                <span class="price">€11,99</span>
-              </div>
-            </div>
-          </a>
-        </li>
+    <!-- Producto 11 -->
+    <div class="product-card">
+      <a href="producto-f11-soft-case-anime.html">
+        <img src="assets/prod11.jpg" alt="Soft Case Anime">
+        <h2>Soft Case Anime</h2>
+        <div class="price">
+          <span class="current-price">€9,99</span>
+          <span class="old-price">€14,99</span>
+        </div>
+      </a>
+    </div>
 
-        <!-- Producto 9 -->
-        <li class="product-card">
-          <a class="product-link" href="producto-xiaomi-redmi-14c-shockproof.html">
-            <div class="product-media">
-              <img class="lazy" data-src="assets/placeholder-9.jpg" alt="Xiaomi Redmi 14C 4G Shockproof Case" loading="lazy">
-            </div>
-            <div class="product-info">
-              <h3 class="product-title">Xiaomi Redmi 14C 4G Shockproof Case</h3>
-              <div class="product-price">
-                <span class="price-discount">€11,99</span>
-                <span class="price-original">€14,99</span>
-              </div>
-            </div>
-          </a>
-        </li>
+    <!-- Producto 12 -->
+    <div class="product-card">
+      <a href="producto-f12-transparente-logo-batman.html">
+        <img src="assets/prod12.jpg" alt="Transparente Logo Batman">
+        <h2>Transparente Logo Batman</h2>
+        <div class="price">
+          <span class="current-price">€9,99</span>
+          <span class="old-price">€14,99</span>
+        </div>
+      </a>
+    </div>
 
-        <!-- Producto 10 -->
-        <li class="product-card">
-          <a class="product-link" href="producto-funda-creativa-xiaomi.html">
-            <div class="product-media">
-              <img class="lazy" data-src="assets/placeholder-10.jpg" alt="Funda Xiaomi/Redmi/POCO – Diseños Creativos" loading="lazy">
-            </div>
-            <div class="product-info">
-              <h3 class="product-title">Funda Xiaomi/Redmi/POCO – Diseños Creativos</h3>
-              <div class="product-price">
-                <span class="price">€9,99</span>
-              </div>
-            </div>
-          </a>
-        </li>
+    <!-- Producto 13 -->
+    <div class="product-card">
+      <a href="producto-f13-transparente-placa-lujo.html">
+        <img src="assets/prod13.jpg" alt="Transparente Placa Lujo">
+        <h2>Transparente Placa Lujo</h2>
+        <div class="price">
+          <span class="current-price">€11,99</span>
+          <span class="old-price">€14,99</span>
+        </div>
+      </a>
+    </div>
 
-        <!-- Producto 11 -->
-        <li class="product-card">
-          <a class="product-link" href="producto-spiderman-xiaomi.html">
-            <div class="product-media">
-              <img class="lazy" data-src="assets/placeholder-11.jpg" alt="Funda Xiaomi Redmi Spider-Man Oficial" loading="lazy">
-            </div>
-            <div class="product-info">
-              <h3 class="product-title">Funda Xiaomi Redmi Spider-Man Oficial</h3>
-              <div class="product-price">
-                <span class="price">€9,99</span>
-              </div>
-            </div>
-          </a>
-        </li>
+    <!-- Producto 14 -->
+    <div class="product-card">
+      <a href="producto-xiaomi-redmi-14c-shockproof-case.html">
+        <img src="assets/prod14.jpg" alt="Xiaomi Redmi 14C Shockproof">
+        <h2>Xiaomi Redmi 14C Shockproof</h2>
+        <div class="price">
+          <span class="current-price">€11,99</span>
+          <span class="old-price">€14,99</span>
+        </div>
+      </a>
+    </div>
 
-        <!-- Producto 12 -->
-        <li class="product-card">
-          <a class="product-link" href="producto-samsung-silver-smile.html">
-            <div class="product-media">
-              <img class="lazy" data-src="assets/placeholder-12.jpg" alt="Funda Samsung Silver Smile Cheeks" loading="lazy">
-            </div>
-            <div class="product-info">
-              <h3 class="product-title">Funda Samsung Silver Smile Cheeks</h3>
-              <div class="product-price">
-                <span class="price">€9,99</span>
-              </div>
-            </div>
-          </a>
-        </li>
+    <!-- Producto 15 -->
+    <div class="product-card">
+      <a href="producto-funda-xiaomi-mi-13-ultra.html">
+        <img src="assets/prod15.jpg" alt="Xiaomi Mi 13 Ultra">
+        <h2>Xiaomi Mi 13 Ultra</h2>
+        <div class="price">
+          <span class="current-price">€12,99</span>
+          <span class="old-price">€16,99</span>
+        </div>
+      </a>
+    </div>
 
-        <!-- Producto 13 -->
-        <li class="product-card">
-          <a class="product-link" href="producto-wave-macaron.html">
-            <div class="product-media">
-              <img class="lazy" data-src="assets/placeholder-13.jpg" alt="Funda iPhone Diseño Wave Macaron" loading="lazy">
-            </div>
-            <div class="product-info">
-              <h3 class="product-title">Funda iPhone Diseño Wave Macaron</h3>
-              <div class="product-price">
-                <span class="price">€9,99</span>
-              </div>
-            </div>
-          </a>
-        </li>
+    <!-- Producto 16 -->
+    <div class="product-card">
+      <a href="producto-funda-iphone-15-pro-max.html">
+        <img src="assets/prod16.jpg" alt="iPhone 15 Pro Max">
+        <h2>iPhone 15 Pro Max</h2>
+        <div class="price">
+          <span class="current-price">€13,99</span>
+          <span class="old-price">€17,99</span>
+        </div>
+      </a>
+    </div>
 
-        <!-- Producto 14 -->
-        <li class="product-card">
-          <a class="product-link" href="producto-y2k-batman-spiderman.html">
-            <div class="product-media">
-              <img class="lazy" data-src="assets/placeholder-14.jpg" alt="Funda Y2K Batman & Spider-Man para iPhone" loading="lazy">
-            </div>
-            <div class="product-info">
-              <h3 class="product-title">Funda Y2K Batman & Spider-Man</h3>
-              <div class="product-price">
-                <span class="price">€9,99</span>
-              </div>
-            </div>
-          </a>
-        </li>
+    <!-- Producto 17 -->
+    <div class="product-card">
+      <a href="producto-funda-samsung-galaxy-s23.html">
+        <img src="assets/prod17.jpg" alt="Samsung Galaxy S23">
+        <h2>Samsung Galaxy S23</h2>
+        <div class="price">
+          <span class="current-price">€12,99</span>
+          <span class="old-price">€16,99</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- Producto 18 -->
+    <div class="product-card">
+      <a href="producto-funda-oppo-find-x6.html">
+        <img src="assets/prod18.jpg" alt="OPPO Find X6">
+        <h2>OPPO Find X6</h2>
+        <div class="price">
+          <span class="current-price">€11,99</span>
+          <span class="old-price">€15,99</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- Producto 19 -->
+    <div class="product-card">
+      <a href="producto-funda-iphone-14-pro.html">
+        <img src="assets/prod19.jpg" alt="iPhone 14 Pro">
+        <h2>iPhone 14 Pro</h2>
+        <div class="price">
+          <span class="current-price">€12,99</span>
+          <span class="old-price">€16,99</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- Producto 20 -->
+    <div class="product-card">
+      <a href="producto-funda-samsung-galaxy-note20.html">
+        <img src="assets/prod20.jpg" alt="Samsung Galaxy Note20">
+        <h2>Samsung Galaxy Note20</h2>
+        <div class="price">
+          <span class="current-price">€11,99</span>
+          <span class="old-price">€15,99</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- Producto 21 -->
+    <div class="product-card">
+      <a href="producto-funda-xiaomi-redmi-note12.html">
+        <img src="assets/prod21.jpg" alt="Xiaomi Redmi Note12">
+        <h2>Xiaomi Redmi Note12</h2>
+        <div class="price">
+          <span class="current-price">€10,99</span>
+          <span class="old-price">€14,99</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- Producto 22 -->
+    <div class="product-card">
+      <a href="producto-funda-iphone-se-2023.html">
+        <img src="assets/prod22.jpg" alt="iPhone SE 2023">
+        <h2>iPhone SE 2023</h2>
+        <div class="price">
+          <span class="current-price">€9,99</span>
+          <span class="old-price">€13,99</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- Producto 23 -->
+    <div class="product-card">
+      <a href="producto-funda-samsung-galaxy-a54.html">
+        <img src="assets/prod23.jpg" alt="Samsung Galaxy A54">
+        <h2>Samsung Galaxy A54</h2>
+        <div class="price">
+          <span class="current-price">€11,99</span>
+          <span class="old-price">€15,99</span>
+        </div>
+      </a>
+    </div>
 
         <!-- Repite <li> para los demás productos con sus datos -->
       </ul>
