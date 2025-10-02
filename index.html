@@ -8,53 +8,39 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Header fijo -->
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="index.html">PrimCoin</a>
       <nav class="main-nav" aria-label="Navegación principal">
         <a href="index.html">Inicio</a>
         <a href="#catalogo">Catálogo</a>
-        <a href="https://primcoin.myshopify.com/" target="_blank" rel="noopener">Tienda Shopify</a>
+        <a href="https://primcoin.myshopify.com/" target="_blank" rel="noopener">Shopify</a>
       </nav>
-      <div class="header-actions">
-        <button class="icon-btn" aria-label="Buscar">🔍</button>
-        <a class="btn ghost" href="https://primcoin.myshopify.com/" target="_blank" rel="noopener">Carrito</a>
-      </div>
     </div>
   </header>
 
   <main>
-    <section class="hero">
-      <div class="container">
-        <h1>Fundas y accesorios únicos</h1>
-        <p class="lead">Versión estática optimizada — catálogo visual, accesible y responsivo.</p>
+    <!-- Banner Hero Principal -->
+    <section class="hero-banner">
+      <img src="assets/banner-fundas.jpg" alt="Fundas de móviles de alta calidad" class="hero-img">
+      <div class="hero-overlay">
+        <h1>Fundas que Protegen y Estilo que Inspira</h1>
+        <p>Descubre nuestra colección exclusiva</p>
+        <a class="btn btn-hero" href="#catalogo">Ver Catálogo</a>
       </div>
     </section>
 
-    <section id="catalogo" class="container catalog-section" aria-labelledby="catalogo-title">
-      <h2 id="catalogo-title">Catálogo — Productos destacados</h2>
+    <!-- Catálogo -->
+    <section id="catalogo" class="container catalog-section">
+      <h2 class="section-title">Catálogo de Productos</h2>
 
-      <!-- Barra de filtros/sorting (simulada) -->
-      <div class="catalog-controls">
-        <div class="results">Mostrando <strong>16</strong> productos</div>
-        <div class="controls">
-          <label for="sort">Ordenar:</label>
-          <select id="sort" aria-label="Ordenar productos">
-            <option value="popular">Más vendidos</option>
-            <option value="price-asc">Precio: menor a mayor</option>
-            <option value="price-desc">Precio: mayor a menor</option>
-          </select>
-        </div>
-      </div>
-
-      <!-- Grid de productos -->
       <ul class="product-grid" role="list">
-        <!-- Repite cada producto: imagen (lazy), nombre, precio, enlace a página de detalle -->
-        <!-- Producto 1 -->
+        <!-- Ejemplo producto -->
         <li class="product-card">
           <a class="product-link" href="producto-f1-colapinto.html">
             <div class="product-media">
-              <!-- CAMBIAR: reemplazar data-src por la URL real de la imagen del producto -->
+              <!-- REEMPLAZAR: con imagen real -->
               <img class="lazy" data-src="assets/placeholder-1.jpg" alt="F1 Colapinto Plateada" loading="lazy">
             </div>
             <div class="product-info">
@@ -66,7 +52,7 @@
             </div>
           </a>
         </li>
-
+         
         <!-- Producto 2 -->
         <li class="product-card">
           <a class="product-link" href="producto-funda-cuero-xiaomi.html">
@@ -267,32 +253,32 @@
           </a>
         </li>
 
-        <!-- NOTA: añade más <li> siguiendo el patrón si tienes más productos -->
+        <!-- Repite <li> para los demás productos con sus datos -->
       </ul>
     </section>
   </main>
 
+  <!-- Footer -->
   <footer class="site-footer">
     <div class="container footer-inner">
       <div>
         <strong>PrimCoin</strong><br>
-        Fundas y accesorios — diseño y protección.
+        Fundas y accesorios con estilo.
       </div>
       <nav class="footer-nav">
-        <a href="https://primcoin.myshopify.com/" target="_blank" rel="noopener">Tienda Shopify</a>
+        <a href="https://primcoin.myshopify.com/" target="_blank">Shopify</a>
         <a href="#">Contacto</a>
-        <a href="#">Política de privacidad</a>
       </nav>
     </div>
     <div class="copyright">© <span id="year"></span> PrimCoin — Todos los derechos reservados.</div>
   </footer>
 
+  <!-- JS -->
   <script>
-    // Pequeñas utilidades JS:
-    // 1) Rellenar año
+    // Año automático
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // 2) Lazy-loading simple: sustituye data-src por src cuando está cerca del viewport
+    // Lazy-loading de imágenes
     (function(){
       const imgs = document.querySelectorAll('img.lazy');
       if ('IntersectionObserver' in window) {
@@ -308,16 +294,9 @@
         }, { rootMargin: '200px' });
         imgs.forEach(i => io.observe(i));
       } else {
-        // fallback
         imgs.forEach(img => img.src = img.dataset.src);
       }
     })();
-
-    // 3) Sorting interactivo (client-side simulación)
-    document.getElementById('sort').addEventListener('change', function(e){
-      // Implementación mínima: reenfocar al top; extensión posible: reordenar DOM por precio.
-      window.scrollTo({ top: document.querySelector('.catalog-section').offsetTop - 20, behavior: 'smooth' });
-    });
   </script>
 </body>
 </html>
