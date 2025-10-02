@@ -1,0 +1,610 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>PrimCoin — Tienda (Maqueta)</title>
+
+<!-- Tipografía profesional y minimalista -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<!-- Metadatos para accesibilidad / rendimiento -->
+<meta name="description" content="Maqueta moderna y responsive de tienda e-commerce (header, carousel, productos, footer).">
+<meta name="color-scheme" content="light dark">
+
+<style>
+/* ===========================
+Reset ligero + variables
+=========================== */
+:root{
+--bg:#ffffff;
+--card:#f7f7f8;
+--muted:#6b7280;
+--accent:#0f172a; /* deep navy for high-end feel */
+--accent-2:#111827;
+--primary:#111827;
+--accent-soft:#f1f5f9;
+--success:#10b981;
+--radius:12px;
+--max-width:1200px;
+--gap:1.25rem;
+--transition:200ms ease;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+margin:0;
+font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+color:var(--accent-2);
+background:var(--bg);
+-webkit-font-smoothing:antialiased;
+-moz-osx-font-smoothing:grayscale;
+line-height:1.45;
+-webkit-tap-highlight-color: transparent;
+}
+
+/* Container */
+.container{
+max-width:var(--max-width);
+margin:0 auto;
+padding:1rem;
+}
+
+/* ================
+Header / Navbar
+================ */
+header.site-header{
+border-bottom:1px solid #e6e9ee;
+background:linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.6));
+backdrop-filter: blur(4px);
+position:sticky;
+top:0;
+z-index:100;
+}
+.header-inner{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:1rem;
+padding:0.85rem 0;
+}
+
+.logo{
+display:flex;
+gap:.75rem;
+align-items:center;
+text-decoration:none;
+color:var(--primary);
+}
+.logo .mark{
+width:44px;height:44px;
+border-radius:10px;
+background:linear-gradient(135deg,#111827,#0f172a);
+display:grid;place-items:center;
+color:white;font-weight:700;font-size:18px;
+box-shadow:0 6px 18px rgba(15,23,42,0.12);
+}
+.nav{
+display:flex;gap:1rem;align-items:center;
+}
+.nav a{
+color:var(--accent-2);
+text-decoration:none;
+font-weight:600;
+padding:0.5rem 0.6rem;
+border-radius:8px;
+}
+.nav a:hover{background:#f3f4f6}
+
+/* Search + cart */
+.header-actions{
+display:flex;gap:0.75rem;align-items:center;
+}
+.search{
+display:flex;align-items:center;border:1px solid #e6e9ee;padding:0.35rem 0.6rem;border-radius:999px;
+gap:0.5rem;min-width:220px;background:white;
+}
+.search input{
+border:0;background:transparent;outline:0;font-size:14px;
+}
+.icon-btn{
+background:transparent;border:0;padding:0.5rem;border-radius:8px;cursor:pointer;
+}
+
+.cart{
+position:relative;
+}
+.cart .count{
+position:absolute;right:-6px;top:-6px;background:var(--success);color:white;font-size:12px;
+min-width:20px;height:20px;border-radius:99px;display:inline-grid;place-items:center;padding:0 6px;font-weight:700;
+box-shadow:0 2px 6px rgba(16,185,129,0.2);
+}
+
+/* ==============
+Hero / Carousel
+============== */
+.hero{
+margin-top:1rem;
+display:grid;
+grid-template-columns: 1fr;
+gap:1rem;
+align-items:center;
+}
+
+/* Carousel wrapper */
+.carousel{
+position:relative;
+overflow:hidden;
+border-radius:var(--radius);
+min-height:320px;
+background:linear-gradient(180deg,#f8fafc,#fff);
+box-shadow:0 6px 30px rgba(16,24,40,0.06);
+}
+.slides{
+display:flex;
+transition:transform 450ms var(--transition);
+will-change:transform;
+}
+.slide{
+min-width:100%;
+padding:2rem;
+display:grid;
+grid-template-columns: 1fr;
+gap:1rem;
+align-items:center;
+}
+.slide .info{
+max-width:640px;
+}
+.slide h1{font-size:28px;margin:0 0 .5rem}
+.slide p{margin:0 0 1rem;color:var(--muted)}
+.slide img{
+width:100%;
+max-height:280px;
+object-fit:cover;border-radius:10px;
+box-shadow:0 8px 30px rgba(2,6,23,0.06);
+}
+.carousel-controls{
+position:absolute;left:0;right:0;bottom:12px;display:flex;justify-content:center;gap:0.5rem;
+}
+.dot{
+width:10px;height:10px;border-radius:99px;background:#d1d5db;cursor:pointer;border:0;
+}
+.dot[aria-current="true"]{background:var(--accent-2);transform:scale(1.05)}
+
+.carousel-btn{
+position:absolute;top:50%;transform:translateY(-50%);
+background:rgba(255,255,255,0.9);border:0;padding:0.6rem;border-radius:8px;cursor:pointer;
+box-shadow:0 6px 18px rgba(2,6,23,0.08);
+}
+.carousel-btn.left{left:12px}
+.carousel-btn.right{right:12px}
+
+/* ==============
+Banners
+============== */
+.banners{
+display:grid;
+grid-template-columns: repeat(3,1fr);
+gap:1rem;
+margin-top:1rem;
+}
+.banner{
+background:var(--card);
+padding:1rem;border-radius:10px;display:flex;align-items:center;gap:1rem;
+}
+.banner p{margin:0}
+
+/* ==============
+Product grid
+============== */
+.section-title{
+display:flex;align-items:center;justify-content:space-between;margin:1.25rem 0 0.85rem;
+}
+
+.products-grid{
+display:grid;
+grid-template-columns: repeat(4,1fr);
+gap:1rem;
+}
+.product{
+background:white;border-radius:12px;padding:0.9rem;border:1px solid #eef2f6;display:flex;flex-direction:column;gap:0.6rem;
+transition:transform 180ms ease, box-shadow 180ms ease;
+}
+.product:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(2,6,23,0.06)}
+.product img{width:100%;height:190px;object-fit:cover;border-radius:10px}
+.product .meta{display:flex;flex-direction:column;gap:0.3rem}
+.product .title{font-weight:600}
+.product .price{color:var(--muted);font-weight:700}
+.product .actions{margin-top:auto;display:flex;gap:0.5rem;align-items:center}
+.btn{
+padding:0.6rem 0.8rem;border-radius:10px;border:0;background:var(--accent-2);color:white;font-weight:600;cursor:pointer;
+transition:transform var(--transition);
+}
+.btn.secondary{
+background:transparent;border:1px solid #e6e9ee;color:var(--accent-2);font-weight:600;
+}
+.chip{
+background: #f8fafc;padding:0.25rem 0.5rem;border-radius:8px;font-size:12px;color:var(--muted);
+}
+
+/* ==============
+Footer
+============== */
+footer.site-footer{
+margin-top:2rem;border-top:1px solid #eef2f6;padding:2rem 0;color:var(--muted);
+background:linear-gradient(180deg,#fff,#fbfdff);
+}
+.footer-grid{
+display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;
+}
+.footer-grid a{display:block;color:var(--muted);text-decoration:none;margin-bottom:0.5rem}
+.small{font-size:13px;color:var(--muted)}
+
+/* ============
+Responsiveness
+============ */
+@media (max-width:1000px){
+.products-grid{grid-template-columns:repeat(3,1fr)}
+.banners{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:760px){
+.header-inner{padding:0.6rem 0}
+.nav{display:none}
+.search{min-width:120px}
+.hero{grid-template-columns:1fr}
+.banners{grid-template-columns:1fr}
+.products-grid{grid-template-columns:repeat(2,1fr)}
+.carousel{min-height:240px}
+}
+@media (max-width:420px){
+.products-grid{grid-template-columns:1fr}
+.header-actions{gap:0.4rem}
+.logo .mark{width:40px;height:40px}
+}
+
+/* Small accessibility focus */
+.sr-only{
+position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;
+}
+</style>
+</head>
+<body>
+<!-- ============================
+Site header: logo / nav / cart
+Semantic tags + accessibility attributes
+============================ -->
+<header class="site-header" role="banner">
+<div class="container header-inner" role="navigation" aria-label="Navegación principal">
+<a class="logo" href="#">
+<span class="mark" aria-hidden="true">P</span>
+<div>
+<div style="font-weight:700">PrimCoin</div>
+<div class="small" style="margin-top:2px">Fundas & accesorios</div>
+</div>
+</a>
+
+<nav class="nav" aria-label="Enlaces principales">
+<a href="#">Inicio</a>
+<a href="#">Catálogo</a>
+<a href="#">Contactar</a>
+<a href="#" aria-current="page">Más</a>
+</nav>
+
+<div class="header-actions" role="group" aria-label="Acciones">
+<div class="search" role="search" aria-label="Buscar productos">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<path d="M21 21l-4.35-4.35" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="11" cy="11" r="6" stroke="#9CA3AF" stroke-width="2" />
+</svg>
+<input type="search" placeholder="Buscar productos..." aria-label="Buscar productos" />
+</div>
+
+<button class="icon-btn" aria-label="Lista de deseos">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z" stroke="#374151" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</button>
+
+<div class="cart" aria-live="polite">
+<button class="icon-btn" aria-label="Abrir carrito">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+<path d="M6 6h15l-1.5 9h-12z" stroke="#374151" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="10" cy="20" r="1" fill="#374151"/><circle cx="18" cy="20" r="1" fill="#374151"/>
+</svg>
+</button>
+<span class="count" id="cart-count" aria-hidden="false">0</span>
+<span class="sr-only" id="cart-announcement">Total de artículos en el carrito: 0</span>
+</div>
+</div>
+</div>
+</header>
+
+<main>
+<div class="container">
+<!-- HERO / CAROUSEL -->
+<section class="hero" aria-labelledby="hero-title">
+<div class="carousel" id="carousel" aria-roledescription="carousel" aria-label="Promociones">
+<div class="slides" id="slides">
+<!-- Slide 1 -->
+<article class="slide" role="group" aria-roledescription="slide" aria-label="Oferta destacada 1">
+<div class="info">
+<h1 id="hero-title">Fundas premium — protección con estilo</h1>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Diseño minimal y protección de alta gama para tu móvil.</p>
+<div style="display:flex;gap:0.6rem;">
+<button class="btn">Comprar ahora</button>
+<button class="btn secondary">Ver catálogo</button>
+</div>
+</div>
+<img src="https://picsum.photos/seed/p1/1200/600" alt="Funda premium en fondo elegante" />
+</article>
+
+<!-- Slide 2 -->
+<article class="slide" role="group" aria-roledescription="slide" aria-label="Oferta destacada 2">
+<div class="info">
+<h1>Accesorios inalámbricos</h1>
+<p>Calidad y compatibilidad. Cargadores y accesorios diseñados para un uso diario confortable.</p>
+<div style="display:flex;gap:0.6rem;">
+<button class="btn">Explorar accesorios</button>
+</div>
+</div>
+<img src="https://picsum.photos/seed/p2/1200/600" alt="Accesorios inalámbricos sobre madera" />
+</article>
+
+<!-- Slide 3 -->
+<article class="slide" role="group" aria-roledescription="slide" aria-label="Oferta destacada 3">
+<div class="info">
+<h1>Envío rápido y seguro</h1>
+<p>Envíos internacionales y devoluciones fáciles. Compras sin complicaciones.</p>
+<div style="display:flex;gap:0.6rem;">
+<button class="btn">Ver políticas</button>
+</div>
+</div>
+<img src="https://picsum.photos/seed/p3/1200/600" alt="Paquete listo para envío" />
+</article>
+</div>
+
+<!-- Controls -->
+<button class="carousel-btn left" id="prev" aria-label="Slide anterior">&larr;</button>
+<button class="carousel-btn right" id="next" aria-label="Siguiente slide">&rarr;</button>
+
+<div class="carousel-controls" id="dots" role="tablist" aria-label="Indicadores de slides">
+<!-- Dots inserted by JS -->
+</div>
+</div>
+
+<!-- Promotional banners -->
+<div class="banners" aria-hidden="false" style="margin-top:1rem;">
+<div class="banner">
+<div style="flex:1">
+<strong>Promoción: 20% descuento</strong>
+<p class="small">En fundas seleccionadas — código: PRIM20</p>
+</div>
+<div class="chip">Envío gratuito</div>
+</div>
+<div class="banner">
+<div>
+<strong>Pago seguro</strong>
+<p class="small">Tarjeta, PayPal y pago en cuotas</p>
+</div>
+</div>
+<div class="banner">
+<div>
+<strong>Soporte 24/7</strong>
+<p class="small">Resolvemos tus dudas rápidamente</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Product section -->
+<section aria-labelledby="featured-title" style="margin-top:1.25rem;">
+<div class="section-title">
+<h2 id="featured-title" style="margin:0">Productos destacados</h2>
+<a href="#" class="small" aria-label="Ver todo el catálogo">Ver todo →</a>
+</div>
+
+<div class="products-grid" id="products" aria-live="polite">
+<!-- Product card repeated (placeholder content) -->
+<!-- Example product -->
+<article class="product" tabindex="0" aria-label="Funda premium - Producto ejemplo">
+<img src="https://picsum.photos/seed/item1/600/400" alt="Funda premium color grafito" />
+<div class="meta">
+<div class="title">Funda Premium Grafito</div>
+<div class="price">€11,99 <span style="text-decoration:line-through;color:#9ca3af;font-weight:500;margin-left:6px">€14,99</span></div>
+<div class="small">Entrega en 2-4 días</div>
+</div>
+<div class="actions">
+<button class="btn add-to-cart" data-product-id="p1" aria-label="Añadir Funda Premium Grafito al carrito">Añadir al carrito</button>
+<button class="btn secondary" aria-label="Ver detalles">Ver</button>
+</div>
+</article>
+
+<!-- Copy/paste a few more -->
+<article class="product" tabindex="0" aria-label="Funda magnética - Producto ejemplo">
+<img src="https://picsum.photos/seed/item2/600/400" alt="Funda magnética transparente" />
+<div class="meta">
+<div class="title">Funda Magnética Transparente</div>
+<div class="price">€9,99</div>
+<div class="small">Compatibilidad: iPhone / Android</div>
+</div>
+<div class="actions">
+<button class="btn add-to-cart" data-product-id="p2">Añadir al carrito</button>
+<button class="btn secondary">Ver</button>
+</div>
+</article>
+
+<article class="product" tabindex="0" aria-label="Funda de cuero - Producto ejemplo">
+<img src="https://picsum.photos/seed/item3/600/400" alt="Funda de cuero marrón" />
+<div class="meta">
+<div class="title">Funda Cuero Business</div>
+<div class="price">€14,99</div>
+<div class="small">Toque premium y protección</div>
+</div>
+<div class="actions">
+<button class="btn add-to-cart" data-product-id="p3">Añadir al carrito</button>
+<button class="btn secondary">Ver</button>
+</div>
+</article>
+
+<article class="product" tabindex="0" aria-label="Soporte de anillo - Producto ejemplo">
+<img src="https://picsum.photos/seed/item4/600/400" alt="Soporte anular para móvil" />
+<div class="meta">
+<div class="title">Soporte Anillo Metal</div>
+<div class="price">€6,99</div>
+<div class="small">Ideal para selfies y agarre</div>
+</div>
+<div class="actions">
+<button class="btn add-to-cart" data-product-id="p4">Añadir al carrito</button>
+<button class="btn secondary">Ver</button>
+</div>
+</article>
+</div>
+</section>
+</div>
+</main>
+
+<!-- Footer -->
+<footer class="site-footer" role="contentinfo">
+<div class="container">
+<div class="footer-grid" style="align-items:start">
+<div>
+<strong>PrimCoin</strong>
+<p class="small">Fundas de móvil y accesorios únicos</p>
+</div>
+
+<div>
+<div><strong>Enlaces</strong></div>
+<a href="#">Inicio</a>
+<a href="#">Catálogo</a>
+<a href="#">Contacto</a>
+<a href="#">Política de devoluciones</a>
+</div>
+
+<div>
+<div><strong>Contacto</strong></div>
+<div class="small">email: soporte@ejemplo.com</div>
+<div class="small">Tel: +34 600 000 000</div>
+<div class="small" style="margin-top:8px">&copy; <span id="year"></span> PrimCoin. Todos los derechos reservados.</div>
+</div>
+</div>
+</div>
+</footer>
+
+<!-- ===========================
+JavaScript: carousel, cart UI (visual), accessible controls
+No backend — solo visual demo
+=========================== -->
+<script>
+/* ===========================
+Utilities
+=========================== */
+function qs(selector, ctx=document){ return ctx.querySelector(selector) }
+function qsa(selector, ctx=document){ return Array.from(ctx.querySelectorAll(selector)) }
+
+/* ===========================
+Carousel logic (accessible)
+- keyboard left/right
+- dots for navigation (role=tablist)
+- autoplay with pause on focus/hover
+=========================== */
+(function carouselInit(){
+const slidesWrap = qs('#slides');
+const slides = qsa('.slide');
+const dotsWrap = qs('#dots');
+let index = 0;
+let timer = null;
+const AUTOPLAY_MS = 5000;
+
+function renderDots(){
+dotsWrap.innerHTML = '';
+slides.forEach((s,i)=>{
+const btn = document.createElement('button');
+btn.className = 'dot';
+btn.type = 'button';
+btn.setAttribute('role','tab');
+btn.setAttribute('aria-selected', i === index ? 'true' : 'false');
+btn.setAttribute('aria-current', i === index ? 'true' : 'false');
+btn.setAttribute('aria-label', 'Ir al slide ' + (i+1));
+btn.addEventListener('click', ()=> goTo(i));
+dotsWrap.appendChild(btn);
+});
+}
+
+function update(){
+slidesWrap.style.transform = `translateX(-${index * 100}%)`;
+// update dots state
+qsa('.dot', dotsWrap).forEach((d,i)=>{
+d.setAttribute('aria-selected', i === index ? 'true' : 'false');
+d.setAttribute('aria-current', i === index ? 'true' : 'false');
+});
+}
+
+function next(){ index = (index + 1) % slides.length; update(); }
+function prev(){ index = (index - 1 + slides.length) % slides.length; update(); }
+function goTo(i){ index = i % slides.length; update(); resetTimer(); }
+
+qs('#next').addEventListener('click', ()=>{ next(); resetTimer(); });
+qs('#prev').addEventListener('click', ()=>{ prev(); resetTimer(); });
+
+// keyboard
+document.addEventListener('keydown', (e)=>{
+if(e.key === 'ArrowRight') { next(); resetTimer(); }
+if(e.key === 'ArrowLeft') { prev(); resetTimer(); }
+});
+
+// autoplay
+function resetTimer(){
+if(timer) clearInterval(timer);
+timer = setInterval(()=> next(), AUTOPLAY_MS);
+}
+// pause on hover/focus
+['mouseenter','focusin'].forEach(ev => qs('#carousel').addEventListener(ev, ()=>{ if(timer) clearInterval(timer); }));
+['mouseleave','focusout'].forEach(ev => qs('#carousel').addEventListener(ev, ()=>{ resetTimer(); }));
+
+renderDots();
+update();
+resetTimer();
+})();
+
+/* ===========================
+Simple client-side cart visual (no backend)
+- increments cart count and announces change to screen readers
+=========================== */
+(function cartDemo(){
+const cartCountEl = qs('#cart-count');
+const cartAnnouncement = qs('#cart-announcement');
+let count = 0;
+
+function setCount(n){
+count = n;
+cartCountEl.textContent = String(count);
+cartAnnouncement.textContent = 'Total de artículos en el carrito: ' + count;
+}
+
+// Attach to all .add-to-cart buttons
+qsa('.add-to-cart').forEach(btn=>{
+btn.addEventListener('click', (e)=>{
+// Visually show a quick animation
+btn.disabled = true;
+btn.textContent = 'Añadido';
+btn.style.transform = 'translateY(-2px)';
+setTimeout(()=>{
+btn.disabled = false;
+btn.textContent = 'Añadir al carrito';
+btn.style.transform = '';
+},800);
+
+setCount(count + 1);
+});
+});
+
+// Initialize
+setCount(0);
+})();
+
+// Small bits: year in footer
+(function setYear(){ qs('#year').textContent = new Date().getFullYear(); })();
+</script>
+</body>
+</html>
