@@ -1,858 +1,452 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PrimCoin — Catálogo Elegante de Fundas para Móviles</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* Variables CSS para consistencia */
-        :root {
-            --primary: #2c3e50;
-            --secondary: #FFA500; /* Color amarillo-naranja para la marca */
-            --accent: #e74c3c;
-            --light: #f8f9fa;
-            --dark: #1a1a1a; /* Gris oscuro elegante */
-            --gray: #7f8c8d;
-            --bg-dark: #2d3436; /* Fondo gris oscuro elegante */
-            --bg-light: #636e72; /* Gris medio para contraste */
-            --header-bg: #FF8C00; /* Naranja más fuerte para el header */
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
-        }
-
-        /* Estilos generales */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--light);
-            background: linear-gradient(135deg, var(--bg-dark) 0%, #34495e 100%);
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header mejorado con color más fuerte */
-        .site-header {
-            background-color: var(--header-bg); /* Naranja fuerte */
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .header-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
-        }
-
-        .brand {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: white;
-            text-decoration: none;
-            letter-spacing: -0.5px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .coin-logo {
-            width: 45px;
-            height: 45px;
-            background: radial-gradient(circle at 30% 30%, #FFD700, #FF8C00);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 3px solid #B8860B;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-            position: relative;
-        }
-
-        .coin-logo::before {
-            content: "";
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
-        }
-
-        .coin-logo .p-letter {
-            font-size: 1.5rem;
-            font-weight: 900;
-            color: #8B4513;
-            text-shadow: 1px 1px 0 rgba(255,255,255,0.5);
-            z-index: 1;
-        }
-
-        .main-nav {
-            display: flex;
-            gap: 25px;
-        }
-
-        .main-nav a {
-            text-decoration: none;
-            color: white;
-            font-weight: 500;
-            transition: var(--transition);
-            position: relative;
-            padding: 8px 0;
-        }
-
-        .main-nav a:hover {
-            color: var(--dark);
-        }
-
-        .main-nav a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: white;
-            transition: var(--transition);
-        }
-
-        .main-nav a:hover::after {
-            width: 100%;
-        }
-
-        /* Hero section como banner que ocupa toda la pantalla */
-        .hero-banner {
-            position: relative;
-            height: 100vh; /* Ocupa toda la pantalla */
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 40px;
-        }
-
-        .hero-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.8;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            padding: 0 20px;
-            background: linear-gradient(135deg, rgba(255, 140, 0, 0.7) 0%, rgba(44, 62, 80, 0.8) 100%);
-        }
-
-        .hero-overlay h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            font-weight: 700;
-        }
-
-        .hero-overlay p {
-            font-size: 1.3rem;
-            margin-bottom: 30px;
-            max-width: 600px;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background-color: var(--accent);
-            color: white;
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: 600;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            background-color: #c0392b;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .btn-hero {
-            font-size: 1.1rem;
-            padding: 15px 40px;
-            background-color: white;
-            color: var(--header-bg);
-        }
-
-        .btn-hero:hover {
-            background-color: var(--light);
-            color: var(--dark);
-        }
-
-        /* Catálogo mejorado */
-        .catalog-section {
-            padding: 80px 0;
-            margin-bottom: 40px;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 50px;
-            color: white;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background-color: var(--secondary);
-            margin: 15px auto;
-            border-radius: 2px;
-        }
-
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
-            list-style: none;
-        }
-
-        .product-card {
-            background: linear-gradient(145deg, #3c4a5a, #2d3846);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-            transition: var(--transition);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
-            border-color: var(--secondary);
-        }
-
-        .product-link {
-            text-decoration: none;
-            color: inherit;
-            display: block;
-            height: 100%;
-        }
-
-        .product-media {
-            height: 250px;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: rgba(0, 0, 0, 0.2);
-        }
-
-        .product-media img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .product-card:hover .product-media img {
-            transform: scale(1.05);
-        }
-
-        .product-info {
-            padding: 20px;
-        }
-
-        .product-title {
-            font-size: 1.1rem;
-            margin-bottom: 10px;
-            color: white;
-            font-weight: 600;
-            line-height: 1.4;
-        }
-
-        .product-price {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .price-discount {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--secondary);
-        }
-
-        .price-original {
-            font-size: 0.9rem;
-            color: var(--gray);
-            text-decoration: line-through;
-        }
-
-        /* Footer mejorado */
-        .site-footer {
-            background-color: var(--dark);
-            color: white;
-            padding: 50px 0 20px;
-            margin-top: 40px;
-        }
-
-        .footer-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 30px;
-        }
-
-        .footer-inner strong {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            display: block;
-            color: var(--secondary);
-        }
-
-        .footer-nav {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .footer-nav a {
-            color: var(--light);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .footer-nav a:hover {
-            color: var(--secondary);
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .header-inner {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .hero-overlay h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero-overlay p {
-                font-size: 1.1rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .product-grid {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-                gap: 20px;
-            }
-
-            .footer-inner {
-                flex-direction: column;
-                gap: 30px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero-overlay h1 {
-                font-size: 2rem;
-            }
-
-            .product-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PrimCoin — Catálogo</title>
+  <meta name="description" content="Catálogo estático de fundas y accesorios - versión estática inspirada en primcoin.myshopify.com" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Header fijo con color más fuerte -->
-    <header class="site-header">
-        <div class="container header-inner">
-            <a class="brand" href="index.html">
-                <div class="coin-logo">
-                    <span class="p-letter">P</span>
-                </div>
-                PrimCoin
-            </a>
-            <nav class="main-nav" aria-label="Navegación principal">
-                <a href="index.html">Inicio</a>
-                <a href="#catalogo">Catálogo</a>
-                <a href="https://primcoin.myshopify.com/" target="_blank" rel="noopener">Shopify</a>
-            </nav>
-        </div>
-    </header>
+  <!-- Header fijo -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">PrimCoin</a>
+      <nav class="main-nav" aria-label="Navegación principal">
+        <a href="index.html">Inicio</a>
+        <a href="#catalogo">Catálogo</a>
+        <a href="https://primcoin.myshopify.com/" target="_blank" rel="noopener">Shopify</a>
+      </nav>
+    </div>
+  </header>
 
-    <main class="container">
-        <!-- Banner Hero Principal que ocupa toda la pantalla -->
-        <section class="hero-banner">
-            <img src="https://kuoribarcelona.com/cdn/shop/files/compo-tough.png?v=1728489133&width=600" alt="Fundas de móviles de alta calidad" class="hero-img">
-            <div class="hero-overlay">
-                <h1>Fundas que Protegen y Estilo que Inspira</h1>
-                <p>Descubre nuestra colección exclusiva de fundas para móviles, diseñadas para combinar protección premium con el último estilo</p>
-                <a class="btn btn-hero" href="#catalogo">Ver Catálogo</a>
+  <main>
+    <!-- Banner Hero Principal -->
+    <section class="hero-banner">
+      <img src="https://kuoribarcelona.com/cdn/shop/files/compo-tough.png?v=1728489133&width=600" alt="Fundas de móviles de alta calidad" class="hero-img">
+      <div class="hero-overlay">
+        <h1>Fundas que Protegen y Estilo que Inspira</h1>
+        <p>Descubre nuestra colección exclusiva</p>
+        <a class="btn btn-hero" href="#catalogo">Ver Catálogo</a>
+      </div>
+    </section>
+
+    <!-- Catálogo -->
+    <section id="catalogo" class="container catalog-section">
+      <h2 class="section-title">Catálogo de Productos</h2>
+
+      <ul class="product-grid" role="list">
+        <!-- Producto 1 -->
+        <li class="product-card">
+          <a class="product-link" href="producto-f1-colapinto.html">
+            <div class="product-media">
+              <img class="lazy" data-src="https://primcoin.myshopify.com/cdn/shop/files/S00c08adf9adf4da99737abdbc2d2b4578.webp?v=1758999278&width=832" alt="F1 Colapinto Plateada" loading="lazy">
             </div>
-        </section>
-
-        <!-- Catálogo -->
-        <section id="catalogo" class="catalog-section">
-            <h2 class="section-title">Catálogo de Productos</h2>
-
-            <ul class="product-grid" role="list">
-                <!-- Producto 1 -->
-                <li class="product-card">
-                    <a class="product-link" href="producto-f1-colapinto.html">
-                        <div class="product-media">
-                            <img class="lazy" data-src="https://primcoin.myshopify.com/cdn/shop/files/S00c08adf9adf4da99737abdbc2d2b4578.webp?v=1758999278&width=832" alt="F1 Colapinto Plateada" loading="lazy">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">F1 Colapinto Plateada</h3>
-                            <div class="product-price">
-                                <span class="price-discount">€9,99</span>
-                                <span class="price-original">€14,99</span>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-
-                <!-- Producto 2 -->
-                <li class="product-card">
-                    <a href="producto-f2-iphone-neon-pink.html">
-                        <div class="product-media">
-                            <img class="lazy" data-src="https://primcoin.myshopify.com/cdn/shop/files/S034466ceb9df4892b7f05f53c5d741834.webp?v=1759082918&width=832" alt="iPhone Neon Pink" loading="lazy">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">iPhone Neon Pink</h3>
-                            <div class="product-price">
-                                <span class="price-discount">€9,99</span>
-                                <span class="price-original">€14,99</span>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-
-                <!-- Producto 3 -->
-                <li class="product-card">
-                    <a href="producto-f3-samsung-galaxy-blue.html">
-                        <div class="product-media">
-                            <img class="lazy" data-src="https://via.placeholder.com/300x300?text=Samsung+Galaxy+Blue" alt="Samsung Galaxy Blue" loading="lazy">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Samsung Galaxy Blue</h3>
-                            <div class="product-price">
-                                <span class="price-discount">€9,99</span>
-                                <span class="price-original">€14,99</span>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-
-                <!-- Producto 4 -->
-                <li class="product-card">
-                    <a href="producto-f4-oppo-shockproof-case.html">
-                        <div class="product-media">
-                            <img class="lazy" data-src="https://via.placeholder.com/300x300?text=OPPO+Shockproof" alt="OPPO Shockproof Case" loading="lazy">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">OPPO Shockproof Case</h3>
-                            <div class="product-price">
-                                <span class="price-discount">€11,99</span>
-                                <span class="price-original">€14,99</span>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-
-                <!-- Producto 5 -->
-                <li class="product-card">
-                    <a href="producto-f5-xiaomi-mi-12.html">
-                        <div class="product-media">
-                            <img class="lazy" data-src="https://via.placeholder.com/300x300?text=Xiaomi+Mi+12" alt="Xiaomi Mi 12" loading="lazy">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Xiaomi Mi 12</h3>
-                            <div class="product-price">
-                                <span class="price-discount">€10,99</span>
-                                <span class="price-original">€14,99</span>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-
-                <!-- Producto 6 -->
-                <li class="product-card">
-                    <a href="producto-f6-redmi-note-11.html">
-                        <div class="product-media">
-                            <img class="lazy" data-src="https://via.placeholder.com/300x300?text=Redmi+Note+11" alt="Redmi Note 11" loading="lazy">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Redmi Note 11</h3>
-                            <div class="product-price">
-                                <span class="price-discount">€10,99</span>
-                                <span class="price-original">€14,99</span>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-
-                <!-- Producto 7 -->
-                <li class="product-card">
-                    <a href="producto-f7-samsung-silver-smile-cheeks.html">
-                        <div class="product-media">
-                            <img class="lazy" data-src="https://via.placeholder.com/300x300?text=Samsung+Silver" alt="Samsung Silver Smile Cheeks" loading="lazy">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Samsung Silver Smile Cheeks</h3>
-                            <div class="product-price">
-                                <span class="price-discount">€9,99</span>
-                                <span class="price-original">€14,99</span>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-
-                <!-- Producto 8 -->
-                <li class="product-card">
-                    <a href="producto-f8-iphone-wave-macaron.html">
-                        <div class="product-media">
-                            <img class="lazy" data-src="https://via.placeholder.com/300x300?text=iPhone+Wave" alt="iPhone Wave Macaron" loading="lazy">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">iPhone Wave Macaron</h3>
-                            <div class="product-price">
-                                <span class="price-discount">€9,99</span>
-                                <span class="price-original">€14,99</span>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-
-                <!-- Producto 9 -->
-                <li class="product-card">
-                    <a href="producto-f9-y2k-batman-spiderman.html">
-                        <div class="product-media">
-                            <img class="lazy" data-src="https://via.placeholder.com/300x300?text=Y2K+Batman+Spiderman" alt="Y2K Batman Spiderman" loading="lazy">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Y2K Batman Spiderman</h3>
-                            <div class="product-price">
-                                <span class="price-discount">€9,99</span>
-                                <span class="price-original">€14,99</span>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-
-                <!-- Producto 10 -->
-                <li class="product-card">
-                    <a href="producto-f10-oppo-reno14f-transparente.html">
-                        <div class="product-media">
-                            <img class="lazy" data-src="https://via.placeholder.com/300x300?text=OPPO+Reno14F+Transparente" alt="OPPO Reno14F Transparente" loading="lazy">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">OPPO Reno14F Transparente</h3>
-                            <div class="product-price">
-                                <span class="price-discount">€11,99</span>
-                                <span class="price-original">€14,99</span>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-
-                <!-- Producto 11 -->
-                <li class="product-card">
-                    <a href="producto-f11-soft-case-anime.html">
-                        <div class="product-media">
-                            <img class="lazy" data-src="https://via.placeholder.com/300x300?text=Soft+Case+Anime" alt="Soft Case Anime" loading="lazy">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Soft Case Anime</h3>
-                            <div class="product-price">
-                                <span class="price-discount">€9,99</span>
-                                <span class="price-original">€14,99</span>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-
-                <!-- Producto 12 -->
-                <li class="product-card">
-                    <a href="producto-f12-transparente-logo-batman.html">
-                        <div class="product-media">
-                            <img class="lazy" data-src="https://via.placeholder.com/300x300?text=Transparente+Logo+Batman" alt="Transparente Logo Batman" loading="lazy">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Transparente Logo Batman</h3>
-                            <div class="product-price">
-                                <span class="price-discount">€9,99</span>
-                                <span class="price-original">€14,99</span>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-
-                <!-- Producto 13 -->
-                <li class="product-card">
-                    <a href="producto-f13-transparente-placa-lujo.html">
-                        <div class="product-media">
-                            <img class="lazy" data-src="https://via.placeholder.com/300x300?text=Transparente+Placa+Lujo" alt="Transparente Placa Lujo" loading="lazy">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Transparente Placa Lujo</h3>
-                            <div class="product-price">
-                                <span class="price-discount">€11,99</span>
-                                <span class="price-original">€14,99</span>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-
-                <!-- Producto 14 -->
-                <li class="product-card">
-                    <a href="producto-xiaomi-redmi-14c-shockproof-case.html">
-                        <div class="product-media">
-                            <img class="lazy" data-src="https://via.placeholder.com/300x300?text=Xiaomi+Redmi+14C+Shockproof" alt="Xiaomi Redmi 14C Shockproof" loading="lazy">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Xiaomi Redmi 14C Shockproof</h3>
-                            <div class="product-price">
-                                <span class="price-discount">€11,99</span>
-                                <span class="price-original">€14,99</span>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-
-                <!-- Producto 15 -->
-                <li class="product-card">
-                    <a href="producto-funda-xiaomi-mi-13-ultra.html">
-                        <div class="product-media">
-                            <img class="lazy" data-src="https://via.placeholder.com/300x300?text=Xiaomi+Mi+13+Ultra" alt="Xiaomi Mi 13 Ultra" loading="lazy">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Xiaomi Mi 13 Ultra</h3>
-                            <div class="product-price">
-                                <span class="price-discount">€12,99</span>
-                                <span class="price-original">€16,99</span>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-
-                <!-- Producto 16 -->
-                <li class="product-card">
-                    <a href="producto-funda-iphone-15-pro-max.html">
-                        <div class="product-media">
-                            <img class="lazy" data-src="https://via.placeholder.com/300x300?text=iPhone+15+Pro+Max" alt="iPhone 15 Pro Max" loading="lazy">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">iPhone 15 Pro Max</h3>
-                            <div class="product-price">
-                                <span class="price-discount">€13,99</span>
-                                <span class="price-original">€17,99</span>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-
-                <!-- Producto 17 -->
-                <li class="product-card">
-                    <a href="producto-funda-samsung-galaxy-s23.html">
-                        <div class="product-media">
-                            <img class="lazy" data-src="https://via.placeholder.com/300x300?text=Samsung+Galaxy+S23" alt="Samsung Galaxy S23" loading="lazy">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Samsung Galaxy S23</h3>
-                            <div class="product-price">
-                                <span class="price-discount">€12,99</span>
-                                <span class="price-original">€16,99</span>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-
-                <!-- Producto 18 -->
-                <li class="product-card">
-                    <a href="producto-funda-oppo-find-x6.html">
-                        <div class="product-media">
-                            <img class="lazy" data-src="https://via.placeholder.com/300x300?text=OPPO+Find+X6" alt="OPPO Find X6" loading="lazy">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">OPPO Find X6</h3>
-                            <div class="product-price">
-                                <span class="price-discount">€11,99</span>
-                                <span class="price-original">€15,99</span>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-
-                <!-- Producto 19 -->
-                <li class="product-card">
-                    <a href="producto-funda-iphone-14-pro.html">
-                        <div class="product-media">
-                            <img class="lazy" data-src="https://via.placeholder.com/300x300?text=iPhone+14+Pro" alt="iPhone 14 Pro" loading="lazy">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">iPhone 14 Pro</h3>
-                            <div class="product-price">
-                                <span class="price-discount">€12,99</span>
-                                <span class="price-original">€16,99</span>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-
-                <!-- Producto 20 -->
-                <li class="product-card">
-                    <a href="producto-funda-samsung-galaxy-note20.html">
-                        <div class="product-media">
-                            <img class="lazy" data-src="https://via.placeholder.com/300x300?text=Samsung+Galaxy+Note20" alt="Samsung Galaxy Note20" loading="lazy">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Samsung Galaxy Note20</h3>
-                            <div class="product-price">
-                                <span class="price-discount">€11,99</span>
-                                <span class="price-original">€15,99</span>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-
-                <!-- Producto 21 -->
-                <li class="product-card">
-                    <a href="producto-funda-xiaomi-redmi-note12.html">
-                        <div class="product-media">
-                            <img class="lazy" data-src="https://via.placeholder.com/300x300?text=Xiaomi+Redmi+Note12" alt="Xiaomi Redmi Note12" loading="lazy">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Xiaomi Redmi Note12</h3>
-                            <div class="product-price">
-                                <span class="price-discount">€10,99</span>
-                                <span class="price-original">€14,99</span>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-
-                <!-- Producto 22 -->
-                <li class="product-card">
-                    <a href="producto-funda-iphone-se-2023.html">
-                        <div class="product-media">
-                            <img class="lazy" data-src="https://via.placeholder.com/300x300?text=iPhone+SE+2023" alt="iPhone SE 2023" loading="lazy">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">iPhone SE 2023</h3>
-                            <div class="product-price">
-                                <span class="price-discount">€9,99</span>
-                                <span class="price-original">€13,99</span>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-
-                <!-- Producto 23 -->
-                <li class="product-card">
-                    <a href="producto-funda-samsung-galaxy-a54.html">
-                        <div class="product-media">
-                            <img class="lazy" data-src="https://via.placeholder.com/300x300?text=Samsung+Galaxy+A54" alt="Samsung Galaxy A54" loading="lazy">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Samsung Galaxy A54</h3>
-                            <div class="product-price">
-                                <span class="price-discount">€11,99</span>
-                                <span class="price-original">€15,99</span>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-
-            </ul>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="container footer-inner">
-            <div>
-                <strong>PrimCoin</strong>
-                <p>Fundas y accesorios con estilo.</p>
-                <div style="margin-top: 15px;">
-                    <a href="#" style="color: white; margin-right: 15px;"><i class="fab fa-instagram"></i></a>
-                    <a href="#" style="color: white; margin-right: 15px;"><i class="fab fa-facebook"></i></a>
-                    <a href="#" style="color: white;"><i class="fab fa-tiktok"></i></a>
-                </div>
+            <div class="product-info">
+              <h3 class="product-title">F1 Colapinto Plateada</h3>
+              <div class="product-price">
+                <span class="price-discount">€9,99</span>
+                <span class="price-original">€14,99</span>
+              </div>
             </div>
-            <nav class="footer-nav">
-                <a href="https://primcoin.myshopify.com/" target="_blank">Shopify</a>
-                <a href="#">Contacto</a>
-                <a href="#">Sobre Nosotros</a>
-                <a href="#">Política de Privacidad</a>
-            </nav>
-        </div>
-        <div class="copyright">© <span id="year"></span> PrimCoin — Todos los derechos reservados.</div>
-    </footer>
+          </a>
+        </li>
 
-    <!-- JS -->
-    <script>
-        // Año automático
-        document.getElementById('year').textContent = new Date().getFullYear();
+        <!-- Producto 2 -->
+        <li class="product-card">
+          <a href="producto-f2-iphone-neon-pink.html">
+            <div class="product-media">
+              <img class="lazy" data-src="https://primcoin.myshopify.com/cdn/shop/files/S034466ceb9df4892b7f05f53c5d741834.webp?v=1759082918&width=832" alt="iPhone Neon Pink" loading="lazy">
+            </div>
+            <div class="product-info">
+              <h3 class="product-title">iPhone Neon Pink</h3>
+              <div class="product-price">
+                <span class="price-discount">€9,99</span>
+                <span class="price-original">€14,99</span>
+              </div>
+            </div>
+          </a>
+        </li>
 
-        // Lazy-loading de imágenes
-        (function(){
-            const imgs = document.querySelectorAll('img.lazy');
-            if ('IntersectionObserver' in window) {
-                const io = new IntersectionObserver((entries, obs) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            const img = entry.target;
-                            img.src = img.dataset.src;
-                            img.classList.remove('lazy');
-                            obs.unobserve(img);
-                        }
-                    });
-                }, { rootMargin: '200px' });
-                imgs.forEach(i => io.observe(i));
-            } else {
-                imgs.forEach(img => img.src = img.dataset.src);
+        <!-- Producto 3 -->
+        <li class="product-card">
+          <a href="producto-f3-samsung-galaxy-blue.html">
+            <div class="product-media">
+              <img class="lazy" data-src="assets/prod3.jpg" alt="Samsung Galaxy Blue" loading="lazy">
+            </div>
+            <div class="product-info">
+              <h3 class="product-title">Samsung Galaxy Blue</h3>
+              <div class="product-price">
+                <span class="price-discount">€9,99</span>
+                <span class="price-original">€14,99</span>
+              </div>
+            </div>
+          </a>
+        </li>
+
+        <!-- Producto 4 -->
+        <li class="product-card">
+          <a href="producto-f4-oppo-shockproof-case.html">
+            <div class="product-media">
+              <img class="lazy" data-src="assets/prod4.jpg" alt="OPPO Shockproof Case" loading="lazy">
+            </div>
+            <div class="product-info">
+              <h3 class="product-title">OPPO Shockproof Case</h3>
+              <div class="product-price">
+                <span class="price-discount">€11,99</span>
+                <span class="price-original">€14,99</span>
+              </div>
+            </div>
+          </a>
+        </li>
+
+        <!-- Producto 5 -->
+        <li class="product-card">
+          <a href="producto-f5-xiaomi-mi-12.html">
+            <div class="product-media">
+              <img class="lazy" data-src="assets/prod5.jpg" alt="Xiaomi Mi 12" loading="lazy">
+            </div>
+            <div class="product-info">
+              <h3 class="product-title">Xiaomi Mi 12</h3>
+              <div class="product-price">
+                <span class="price-discount">€10,99</span>
+                <span class="price-original">€14,99</span>
+              </div>
+            </div>
+          </a>
+        </li>
+
+        <!-- Producto 6 -->
+        <li class="product-card">
+          <a href="producto-f6-redmi-note-11.html">
+            <div class="product-media">
+              <img class="lazy" data-src="assets/prod6.jpg" alt="Redmi Note 11" loading="lazy">
+            </div>
+            <div class="product-info">
+              <h3 class="product-title">Redmi Note 11</h3>
+              <div class="product-price">
+                <span class="price-discount">€10,99</span>
+                <span class="price-original">€14,99</span>
+              </div>
+            </div>
+          </a>
+        </li>
+
+        <!-- Producto 7 -->
+        <li class="product-card">
+          <a href="producto-f7-samsung-silver-smile-cheeks.html">
+            <div class="product-media">
+              <img class="lazy" data-src="assets/prod7.jpg" alt="Samsung Silver Smile Cheeks" loading="lazy">
+            </div>
+            <div class="product-info">
+              <h3 class="product-title">Samsung Silver Smile Cheeks</h3>
+              <div class="product-price">
+                <span class="price-discount">€9,99</span>
+                <span class="price-original">€14,99</span>
+              </div>
+            </div>
+          </a>
+        </li>
+
+        <!-- Producto 8 -->
+        <li class="product-card">
+          <a href="producto-f8-iphone-wave-macaron.html">
+            <div class="product-media">
+              <img class="lazy" data-src="assets/prod8.jpg" alt="iPhone Wave Macaron" loading="lazy">
+            </div>
+            <div class="product-info">
+              <h3 class="product-title">iPhone Wave Macaron</h3>
+              <div class="product-price">
+                <span class="price-discount">€9,99</span>
+                <span class="price-original">€14,99</span>
+              </div>
+            </div>
+          </a>
+        </li>
+
+        <!-- Producto 9 -->
+        <li class="product-card">
+          <a href="producto-f9-y2k-batman-spiderman.html">
+            <div class="product-media">
+              <img class="lazy" data-src="assets/prod9.jpg" alt="Y2K Batman Spiderman" loading="lazy">
+            </div>
+            <div class="product-info">
+              <h3 class="product-title">Y2K Batman Spiderman</h3>
+              <div class="product-price">
+                <span class="price-discount">€9,99</span>
+                <span class="price-original">€14,99</span>
+              </div>
+            </div>
+          </a>
+        </li>
+
+        <!-- Producto 10 -->
+        <li class="product-card">
+          <a href="producto-f10-oppo-reno14f-transparente.html">
+            <div class="product-media">
+              <img class="lazy" data-src="assets/prod10.jpg" alt="OPPO Reno14F Transparente" loading="lazy">
+            </div>
+            <div class="product-info">
+              <h3 class="product-title">OPPO Reno14F Transparente</h3>
+              <div class="product-price">
+                <span class="price-discount">€11,99</span>
+                <span class="price-original">€14,99</span>
+              </div>
+            </div>
+          </a>
+        </li>
+
+        <!-- Producto 11 -->
+        <li class="product-card">
+          <a href="producto-f11-soft-case-anime.html">
+            <div class="product-media">
+              <img class="lazy" data-src="assets/prod11.jpg" alt="Soft Case Anime" loading="lazy">
+            </div>
+            <div class="product-info">
+              <h3 class="product-title">Soft Case Anime</h3>
+              <div class="product-price">
+                <span class="price-discount">€9,99</span>
+                <span class="price-original">€14,99</span>
+              </div>
+            </div>
+          </a>
+        </li>
+
+        <!-- Producto 12 -->
+        <li class="product-card">
+          <a href="producto-f12-transparente-logo-batman.html">
+            <div class="product-media">
+              <img class="lazy" data-src="assets/prod12.jpg" alt="Transparente Logo Batman" loading="lazy">
+            </div>
+            <div class="product-info">
+              <h3 class="product-title">Transparente Logo Batman</h3>
+              <div class="product-price">
+                <span class="price-discount">€9,99</span>
+                <span class="price-original">€14,99</span>
+              </div>
+            </div>
+          </a>
+        </li>
+
+        <!-- Producto 13 -->
+        <li class="product-card">
+          <a href="producto-f13-transparente-placa-lujo.html">
+            <div class="product-media">
+              <img class="lazy" data-src="assets/prod13.jpg" alt="Transparente Placa Lujo" loading="lazy">
+            </div>
+            <div class="product-info">
+              <h3 class="product-title">Transparente Placa Lujo</h3>
+              <div class="product-price">
+                <span class="price-discount">€11,99</span>
+                <span class="price-original">€14,99</span>
+              </div>
+            </div>
+          </a>
+        </li>
+
+        <!-- Producto 14 -->
+        <li class="product-card">
+          <a href="producto-xiaomi-redmi-14c-shockproof-case.html">
+            <div class="product-media">
+              <img class="lazy" data-src="assets/prod14.jpg" alt="Xiaomi Redmi 14C Shockproof" loading="lazy">
+            </div>
+            <div class="product-info">
+              <h3 class="product-title">Xiaomi Redmi 14C Shockproof</h3>
+              <div class="product-price">
+                <span class="price-discount">€11,99</span>
+                <span class="price-original">€14,99</span>
+              </div>
+            </div>
+          </a>
+        </li>
+
+        <!-- Producto 15 -->
+        <li class="product-card">
+          <a href="producto-funda-xiaomi-mi-13-ultra.html">
+            <div class="product-media">
+              <img class="lazy" data-src="assets/prod15.jpg" alt="Xiaomi Mi 13 Ultra" loading="lazy">
+            </div>
+            <div class="product-info">
+              <h3 class="product-title">Xiaomi Mi 13 Ultra</h3>
+              <div class="product-price">
+                <span class="price-discount">€12,99</span>
+                <span class="price-original">€16,99</span>
+              </div>
+            </div>
+          </a>
+        </li>
+
+        <!-- Producto 16 -->
+        <li class="product-card">
+          <a href="producto-funda-iphone-15-pro-max.html">
+            <div class="product-media">
+              <img class="lazy" data-src="assets/prod16.jpg" alt="iPhone 15 Pro Max" loading="lazy">
+            </div>
+            <div class="product-info">
+              <h3 class="product-title">iPhone 15 Pro Max</h3>
+              <div class="product-price">
+                <span class="price-discount">€13,99</span>
+                <span class="price-original">€17,99</span>
+              </div>
+            </div>
+          </a>
+        </li>
+
+        <!-- Producto 17 -->
+        <li class="product-card">
+          <a href="producto-funda-samsung-galaxy-s23.html">
+            <div class="product-media">
+              <img class="lazy" data-src="assets/prod17.jpg" alt="Samsung Galaxy S23" loading="lazy">
+            </div>
+            <div class="product-info">
+              <h3 class="product-title">Samsung Galaxy S23</h3>
+              <div class="product-price">
+                <span class="price-discount">€12,99</span>
+                <span class="price-original">€16,99</span>
+              </div>
+            </div>
+          </a>
+        </li>
+
+        <!-- Producto 18 -->
+        <li class="product-card">
+          <a href="producto-funda-oppo-find-x6.html">
+            <div class="product-media">
+              <img class="lazy" data-src="assets/prod18.jpg" alt="OPPO Find X6" loading="lazy">
+            </div>
+            <div class="product-info">
+              <h3 class="product-title">OPPO Find X6</h3>
+              <div class="product-price">
+                <span class="price-discount">€11,99</span>
+                <span class="price-original">€15,99</span>
+              </div>
+            </div>
+          </a>
+        </li>
+
+        <!-- Producto 19 -->
+        <li class="product-card">
+          <a href="producto-funda-iphone-14-pro.html">
+            <div class="product-media">
+              <img class="lazy" data-src="assets/prod19.jpg" alt="iPhone 14 Pro" loading="lazy">
+            </div>
+            <div class="product-info">
+              <h3 class="product-title">iPhone 14 Pro</h3>
+              <div class="product-price">
+                <span class="price-discount">€12,99</span>
+                <span class="price-original">€16,99</span>
+              </div>
+            </div>
+          </a>
+        </li>
+
+        <!-- Producto 20 -->
+        <li class="product-card">
+          <a href="producto-funda-samsung-galaxy-note20.html">
+            <div class="product-media">
+              <img class="lazy" data-src="assets/prod20.jpg" alt="Samsung Galaxy Note20" loading="lazy">
+            </div>
+            <div class="product-info">
+              <h3 class="product-title">Samsung Galaxy Note20</h3>
+              <div class="product-price">
+                <span class="price-discount">€11,99</span>
+                <span class="price-original">€15,99</span>
+              </div>
+            </div>
+          </a>
+        </li>
+
+        <!-- Producto 21 -->
+        <li class="product-card">
+          <a href="producto-funda-xiaomi-redmi-note12.html">
+            <div class="product-media">
+              <img class="lazy" data-src="assets/prod21.jpg" alt="Xiaomi Redmi Note12" loading="lazy">
+            </div>
+            <div class="product-info">
+              <h3 class="product-title">Xiaomi Redmi Note12</h3>
+              <div class="product-price">
+                <span class="price-discount">€10,99</span>
+                <span class="price-original">€14,99</span>
+              </div>
+            </div>
+          </a>
+        </li>
+
+        <!-- Producto 22 -->
+        <li class="product-card">
+          <a href="producto-funda-iphone-se-2023.html">
+            <div class="product-media">
+              <img class="lazy" data-src="assets/prod22.jpg" alt="iPhone SE 2023" loading="lazy">
+            </div>
+            <div class="product-info">
+              <h3 class="product-title">iPhone SE 2023</h3>
+              <div class="product-price">
+                <span class="price-discount">€9,99</span>
+                <span class="price-original">€13,99</span>
+              </div>
+            </div>
+          </a>
+        </li>
+
+        <!-- Producto 23 -->
+        <li class="product-card">
+          <a href="producto-funda-samsung-galaxy-a54.html">
+            <div class="product-media">
+              <img class="lazy" data-src="assets/prod23.jpg" alt="Samsung Galaxy A54" loading="lazy">
+            </div>
+            <div class="product-info">
+              <h3 class="product-title">Samsung Galaxy A54</h3>
+              <div class="product-price">
+                <span class="price-discount">€11,99</span>
+                <span class="price-original">€15,99</span>
+              </div>
+            </div>
+          </a>
+        </li>
+
+      </ul>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <strong>PrimCoin</strong><br>
+        Fundas y accesorios con estilo.
+      </div>
+      <nav class="footer-nav">
+        <a href="https://primcoin.myshopify.com/" target="_blank">Shopify</a>
+        <a href="#">Contacto</a>
+      </nav>
+    </div>
+    <div class="copyright">© <span id="year"></span> PrimCoin — Todos los derechos reservados.</div>
+  </footer>
+
+  <!-- JS -->
+  <script>
+    // Año automático
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Lazy-loading de imágenes
+    (function(){
+      const imgs = document.querySelectorAll('img.lazy');
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver((entries, obs) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const img = entry.target;
+              img.src = img.dataset.src;
+              img.classList.remove('lazy');
+              obs.unobserve(img);
             }
-        })();
-    </script>
+          });
+        }, { rootMargin: '200px' });
+        imgs.forEach(i => io.observe(i));
+      } else {
+        imgs.forEach(img => img.src = img.dataset.src);
+      }
+    })();
+  </script>
 </body>
 </html>
