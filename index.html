@@ -39,9 +39,9 @@
             padding: 0 20px;
         }
 
-        /* Header mejorado */
+        /* Header mejorado con fondo amarillo */
         .site-header {
-            background-color: white;
+            background-color: #FFD700; /* Amarillo más intenso */
             box-shadow: var(--shadow);
             position: sticky;
             top: 0;
@@ -58,24 +58,42 @@
         .brand {
             font-size: 1.8rem;
             font-weight: 700;
-            color: var(--secondary); /* Color amarillo-naranja aplicado */
+            color: var(--primary);
             text-decoration: none;
             letter-spacing: -0.5px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 12px;
         }
 
-        .brand i {
-            font-size: 1.5rem;
-            background-color: var(--secondary);
-            color: white;
-            width: 40px;
-            height: 40px;
+        .coin-logo {
+            width: 45px;
+            height: 45px;
+            background: radial-gradient(circle at 30% 30%, #FFD700, #FFA500);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            border: 3px solid #B8860B;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .coin-logo::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+        }
+
+        .coin-logo .p-letter {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: #8B4513;
+            text-shadow: 1px 1px 0 rgba(255,255,255,0.5);
+            z-index: 1;
         }
 
         .main-nav {
@@ -92,7 +110,7 @@
         }
 
         .main-nav a:hover {
-            color: var(--secondary);
+            color: var(--primary);
         }
 
         .main-nav a::after {
@@ -102,7 +120,7 @@
             height: 2px;
             bottom: -5px;
             left: 0;
-            background-color: var(--secondary);
+            background-color: var(--primary);
             transition: var(--transition);
         }
 
@@ -110,11 +128,10 @@
             width: 100%;
         }
 
-        /* Hero section mejorada */
+        /* Hero section que ocupa toda la pantalla */
         .hero-banner {
             position: relative;
-            height: 70vh;
-            min-height: 500px;
+            height: 100vh; /* Ocupa toda la pantalla */
             overflow: hidden;
             display: flex;
             align-items: center;
@@ -147,13 +164,13 @@
         }
 
         .hero-overlay h1 {
-            font-size: 3rem;
-            margin-bottom: 15px;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         .hero-overlay p {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             margin-bottom: 30px;
             max-width: 600px;
         }
@@ -340,11 +357,11 @@
             }
 
             .hero-overlay h1 {
-                font-size: 2.2rem;
+                font-size: 2.5rem;
             }
 
             .hero-overlay p {
-                font-size: 1rem;
+                font-size: 1.1rem;
             }
 
             .section-title {
@@ -363,13 +380,8 @@
         }
 
         @media (max-width: 480px) {
-            .hero-banner {
-                height: 60vh;
-                min-height: 400px;
-            }
-
             .hero-overlay h1 {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
 
             .product-grid {
@@ -379,11 +391,13 @@
     </style>
 </head>
 <body>
-    <!-- Header fijo -->
+    <!-- Header fijo con fondo amarillo -->
     <header class="site-header">
         <div class="container header-inner">
             <a class="brand" href="index.html">
-                <i class="fas fa-coins">P</i>
+                <div class="coin-logo">
+                    <span class="p-letter">P</span>
+                </div>
                 PrimCoin
             </a>
             <nav class="main-nav" aria-label="Navegación principal">
@@ -395,7 +409,7 @@
     </header>
 
     <main class="container">
-        <!-- Banner Hero Principal -->
+        <!-- Banner Hero Principal que ocupa toda la pantalla -->
         <section class="hero-banner">
             <img src="https://kuoribarcelona.com/cdn/shop/files/compo-tough.png?v=1728489133&width=600" alt="Fundas de móviles de alta calidad" class="hero-img">
             <div class="hero-overlay">
