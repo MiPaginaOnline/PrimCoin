@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PrimCoin — Catálogo Completo de Fundas para Móviles</title>
+    <title>PrimCoin — Catálogo Elegante de Fundas para Móviles</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Variables CSS para consistencia */
@@ -12,9 +12,11 @@
             --secondary: #FFA500; /* Color amarillo-naranja para la marca */
             --accent: #e74c3c;
             --light: #f8f9fa;
-            --dark: #2c3e50;
+            --dark: #1a1a1a; /* Gris oscuro elegante */
             --gray: #7f8c8d;
-            --bg-light: #f0f2f5; /* Fondo gris muy claro */
+            --bg-dark: #2d3436; /* Fondo gris oscuro elegante */
+            --bg-light: #636e72; /* Gris medio para contraste */
+            --header-bg: #FF8C00; /* Naranja más fuerte para el header */
             --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             --transition: all 0.3s ease;
         }
@@ -29,8 +31,9 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: var(--dark);
-            background-color: var(--bg-light);
+            color: var(--light);
+            background: linear-gradient(135deg, var(--bg-dark) 0%, #34495e 100%);
+            min-height: 100vh;
         }
 
         .container {
@@ -39,10 +42,10 @@
             padding: 0 20px;
         }
 
-        /* Header mejorado con fondo amarillo */
+        /* Header mejorado con color más fuerte */
         .site-header {
-            background-color: #FFD700; /* Amarillo más intenso */
-            box-shadow: var(--shadow);
+            background-color: var(--header-bg); /* Naranja fuerte */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -58,7 +61,7 @@
         .brand {
             font-size: 1.8rem;
             font-weight: 700;
-            color: var(--primary);
+            color: white;
             text-decoration: none;
             letter-spacing: -0.5px;
             display: flex;
@@ -69,13 +72,13 @@
         .coin-logo {
             width: 45px;
             height: 45px;
-            background: radial-gradient(circle at 30% 30%, #FFD700, #FFA500);
+            background: radial-gradient(circle at 30% 30%, #FFD700, #FF8C00);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             border: 3px solid #B8860B;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
             position: relative;
         }
 
@@ -103,14 +106,15 @@
 
         .main-nav a {
             text-decoration: none;
-            color: var(--dark);
+            color: white;
             font-weight: 500;
             transition: var(--transition);
             position: relative;
+            padding: 8px 0;
         }
 
         .main-nav a:hover {
-            color: var(--primary);
+            color: var(--dark);
         }
 
         .main-nav a::after {
@@ -118,9 +122,9 @@
             position: absolute;
             width: 0;
             height: 2px;
-            bottom: -5px;
+            bottom: 0;
             left: 0;
-            background-color: var(--primary);
+            background-color: white;
             transition: var(--transition);
         }
 
@@ -128,7 +132,7 @@
             width: 100%;
         }
 
-        /* Hero section que ocupa toda la pantalla */
+        /* Hero section como banner que ocupa toda la pantalla */
         .hero-banner {
             position: relative;
             height: 100vh; /* Ocupa toda la pantalla */
@@ -136,7 +140,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             margin-bottom: 40px;
         }
 
@@ -144,7 +147,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 0.7;
+            opacity: 0.8;
         }
 
         .hero-overlay {
@@ -160,19 +163,21 @@
             text-align: center;
             color: white;
             padding: 0 20px;
-            background: rgba(0, 0, 0, 0.4);
+            background: linear-gradient(135deg, rgba(255, 140, 0, 0.7) 0%, rgba(44, 62, 80, 0.8) 100%);
         }
 
         .hero-overlay h1 {
             font-size: 3.5rem;
             margin-bottom: 20px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            font-weight: 700;
         }
 
         .hero-overlay p {
             font-size: 1.3rem;
             margin-bottom: 30px;
             max-width: 600px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
 
         .btn {
@@ -191,20 +196,24 @@
         .btn:hover {
             background-color: #c0392b;
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         }
 
         .btn-hero {
             font-size: 1.1rem;
             padding: 15px 40px;
+            background-color: white;
+            color: var(--header-bg);
+        }
+
+        .btn-hero:hover {
+            background-color: var(--light);
+            color: var(--dark);
         }
 
         /* Catálogo mejorado */
         .catalog-section {
-            padding: 60px 0;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: var(--shadow);
+            padding: 80px 0;
             margin-bottom: 40px;
         }
 
@@ -212,7 +221,7 @@
             text-align: center;
             font-size: 2.5rem;
             margin-bottom: 50px;
-            color: var(--primary);
+            color: white;
             position: relative;
         }
 
@@ -234,17 +243,18 @@
         }
 
         .product-card {
-            background-color: white;
-            border-radius: 10px;
+            background: linear-gradient(145deg, #3c4a5a, #2d3846);
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: var(--shadow);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
             transition: var(--transition);
-            border: 1px solid #eee;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .product-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            border-color: var(--secondary);
         }
 
         .product-link {
@@ -260,7 +270,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #f5f5f5;
+            background-color: rgba(0, 0, 0, 0.2);
         }
 
         .product-media img {
@@ -281,7 +291,7 @@
         .product-title {
             font-size: 1.1rem;
             margin-bottom: 10px;
-            color: var(--primary);
+            color: white;
             font-weight: 600;
             line-height: 1.4;
         }
@@ -295,7 +305,7 @@
         .price-discount {
             font-size: 1.2rem;
             font-weight: 700;
-            color: var(--accent);
+            color: var(--secondary);
         }
 
         .price-original {
@@ -306,9 +316,10 @@
 
         /* Footer mejorado */
         .site-footer {
-            background-color: var(--primary);
+            background-color: var(--dark);
             color: white;
             padding: 50px 0 20px;
+            margin-top: 40px;
         }
 
         .footer-inner {
@@ -391,7 +402,7 @@
     </style>
 </head>
 <body>
-    <!-- Header fijo con fondo amarillo -->
+    <!-- Header fijo con color más fuerte -->
     <header class="site-header">
         <div class="container header-inner">
             <a class="brand" href="index.html">
