@@ -1,452 +1,1044 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>PrimCoin — Catálogo</title>
-  <meta name="description" content="Catálogo estático de fundas y accesorios - versión estática inspirada en primcoin.myshopify.com" />
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primcoin - Tienda Oficial</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c5aa0;
+            --secondary: #ff6b00;
+            --accent: #00a8cc;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --success: #28a745;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fb;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary), #1a3a6e);
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 24px;
+            font-weight: 700;
+            text-decoration: none;
+            color: white;
+        }
+        
+        .logo i {
+            color: var(--secondary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        nav ul li a:hover {
+            color: var(--secondary);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary);
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .header-actions {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .btn-icon {
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-icon:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255,107,0,0.3);
+        }
+        
+        .btn:hover {
+            background: #e55f00;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255,107,0,0.4);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            margin-left: 15px;
+        }
+        
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary);
+        }
+        
+        /* Products Section */
+        .products {
+            padding: 100px 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+        
+        .section-subtitle {
+            color: var(--gray);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.4s;
+            position: relative;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--secondary);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+        
+        .product-image {
+            height: 220px;
+            width: 100%;
+            background-color: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .product-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+        
+        .product-info {
+            padding: 25px;
+        }
+        
+        .product-category {
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .product-title {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            color: var(--dark);
+            font-weight: 600;
+        }
+        
+        .product-description {
+            color: var(--gray);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .product-price {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        
+        .price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .price-old {
+            text-decoration: line-through;
+            color: var(--gray);
+            font-size: 1rem;
+            margin-left: 8px;
+        }
+        
+        .product-rating {
+            color: #ffc107;
+            font-size: 0.9rem;
+        }
+        
+        .product-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn-sm {
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            flex: 1;
+            text-align: center;
+        }
+        
+        .btn-secondary {
+            background: var(--primary);
+        }
+        
+        .btn-secondary:hover {
+            background: #1e4a8a;
+        }
+        
+        /* Modal */
+        .product-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            animation: fadeIn 0.3s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .modal-content {
+            background-color: white;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 1000px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideUp 0.4s;
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 28px;
+            cursor: pointer;
+            color: var(--gray);
+            background: rgba(255,255,255,0.8);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            transition: all 0.3s;
+        }
+        
+        .close-modal:hover {
+            color: var(--dark);
+            background: white;
+        }
+        
+        .modal-product {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .modal-image {
+            flex: 1;
+            min-width: 300px;
+            background-color: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+        
+        .modal-image img {
+            max-width: 100%;
+            max-height: 400px;
+            object-fit: contain;
+        }
+        
+        .modal-details {
+            flex: 1;
+            min-width: 300px;
+            padding: 40px;
+        }
+        
+        .modal-category {
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .modal-title {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+            font-weight: 700;
+        }
+        
+        .modal-price {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .modal-description {
+            margin-bottom: 30px;
+            line-height: 1.7;
+            color: var(--gray);
+        }
+        
+        .modal-features {
+            margin-bottom: 30px;
+        }
+        
+        .modal-features ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .modal-features li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .modal-features i {
+            color: var(--success);
+            margin-right: 10px;
+        }
+        
+        .shopify-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: #96bf48;
+            color: white;
+            padding: 16px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(150,191,72,0.3);
+        }
+        
+        .shopify-btn:hover {
+            background: #7da53a;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(150,191,72,0.4);
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+        
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(44,90,160,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--primary);
+            font-size: 1.8rem;
+        }
+        
+        .feature-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .feature-description {
+            color: var(--gray);
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--primary), #1a3a6e);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--secondary);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-column ul li a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                margin-top: 10px;
+            }
+            
+            nav ul li {
+                margin-left: 15px;
+                margin-right: 15px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .modal-product {
+                flex-direction: column;
+            }
+            
+            .modal-image, .modal-details {
+                min-width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
-  <!-- Header fijo -->
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="index.html">PrimCoin</a>
-      <nav class="main-nav" aria-label="Navegación principal">
-        <a href="index.html">Inicio</a>
-        <a href="#catalogo">Catálogo</a>
-        <a href="https://primcoin.myshopify.com/" target="_blank" rel="noopener">Shopify</a>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <!-- Banner Hero Principal -->
-    <section class="hero-banner">
-      <img src="https://kuoribarcelona.com/cdn/shop/files/compo-tough.png?v=1728489133&width=600" alt="Fundas de móviles de alta calidad" class="hero-img">
-      <div class="hero-overlay">
-        <h1>Fundas que Protegen y Estilo que Inspira</h1>
-        <p>Descubre nuestra colección exclusiva</p>
-        <a class="btn btn-hero" href="#catalogo">Ver Catálogo</a>
-      </div>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <i class="fas fa-coins"></i>
+                    <span>PRIMCOIN</span>
+                </a>
+                <nav>
+                    <ul>
+                        <li><a href="#">Inicio</a></li>
+                        <li><a href="#products">Productos</a></li>
+                        <li><a href="#">Categorías</a></li>
+                        <li><a href="#">Ofertas</a></li>
+                        <li><a href="#">Contacto</a></li>
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <button class="btn-icon">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <button class="btn-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </button>
+                    <button class="btn-icon">
+                        <i class="fas fa-user"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Descubre Nuestra Colección Exclusiva</h1>
+                <p>Productos de alta calidad con diseños únicos que se adaptan a tu estilo de vida moderno</p>
+                <a href="#products" class="btn">Explorar Productos</a>
+                <a href="#" class="btn btn-outline">Ver Ofertas</a>
+            </div>
+        </div>
     </section>
-
-    <!-- Catálogo -->
-    <section id="catalogo" class="container catalog-section">
-      <h2 class="section-title">Catálogo de Productos</h2>
-
-      <ul class="product-grid" role="list">
-        <!-- Producto 1 -->
-        <li class="product-card">
-          <a class="product-link" href="producto-f1-colapinto.html">
-            <div class="product-media">
-              <img class="lazy" data-src="https://primcoin.myshopify.com/cdn/shop/files/S00c08adf9adf4da99737abdbc2d2b4578.webp?v=1758999278&width=832" alt="F1 Colapinto Plateada" loading="lazy">
+    
+    <section class="products" id="products">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nuestros Productos</h2>
+                <p class="section-subtitle">Descubre nuestra selección de productos premium diseñados para ofrecerte la mejor experiencia</p>
             </div>
-            <div class="product-info">
-              <h3 class="product-title">F1 Colapinto Plateada</h3>
-              <div class="product-price">
-                <span class="price-discount">€9,99</span>
-                <span class="price-original">€14,99</span>
-              </div>
+            <div class="products-grid" id="products-grid">
+                <!-- Los productos se cargarán aquí con JavaScript -->
             </div>
-          </a>
-        </li>
-
-        <!-- Producto 2 -->
-        <li class="product-card">
-          <a href="producto-f2-iphone-neon-pink.html">
-            <div class="product-media">
-              <img class="lazy" data-src="https://primcoin.myshopify.com/cdn/shop/files/S034466ceb9df4892b7f05f53c5d741834.webp?v=1759082918&width=832" alt="iPhone Neon Pink" loading="lazy">
-            </div>
-            <div class="product-info">
-              <h3 class="product-title">iPhone Neon Pink</h3>
-              <div class="product-price">
-                <span class="price-discount">€9,99</span>
-                <span class="price-original">€14,99</span>
-              </div>
-            </div>
-          </a>
-        </li>
-
-        <!-- Producto 3 -->
-        <li class="product-card">
-          <a href="producto-f3-samsung-galaxy-blue.html">
-            <div class="product-media">
-              <img class="lazy" data-src="assets/prod3.jpg" alt="Samsung Galaxy Blue" loading="lazy">
-            </div>
-            <div class="product-info">
-              <h3 class="product-title">Samsung Galaxy Blue</h3>
-              <div class="product-price">
-                <span class="price-discount">€9,99</span>
-                <span class="price-original">€14,99</span>
-              </div>
-            </div>
-          </a>
-        </li>
-
-        <!-- Producto 4 -->
-        <li class="product-card">
-          <a href="producto-f4-oppo-shockproof-case.html">
-            <div class="product-media">
-              <img class="lazy" data-src="assets/prod4.jpg" alt="OPPO Shockproof Case" loading="lazy">
-            </div>
-            <div class="product-info">
-              <h3 class="product-title">OPPO Shockproof Case</h3>
-              <div class="product-price">
-                <span class="price-discount">€11,99</span>
-                <span class="price-original">€14,99</span>
-              </div>
-            </div>
-          </a>
-        </li>
-
-        <!-- Producto 5 -->
-        <li class="product-card">
-          <a href="producto-f5-xiaomi-mi-12.html">
-            <div class="product-media">
-              <img class="lazy" data-src="assets/prod5.jpg" alt="Xiaomi Mi 12" loading="lazy">
-            </div>
-            <div class="product-info">
-              <h3 class="product-title">Xiaomi Mi 12</h3>
-              <div class="product-price">
-                <span class="price-discount">€10,99</span>
-                <span class="price-original">€14,99</span>
-              </div>
-            </div>
-          </a>
-        </li>
-
-        <!-- Producto 6 -->
-        <li class="product-card">
-          <a href="producto-f6-redmi-note-11.html">
-            <div class="product-media">
-              <img class="lazy" data-src="assets/prod6.jpg" alt="Redmi Note 11" loading="lazy">
-            </div>
-            <div class="product-info">
-              <h3 class="product-title">Redmi Note 11</h3>
-              <div class="product-price">
-                <span class="price-discount">€10,99</span>
-                <span class="price-original">€14,99</span>
-              </div>
-            </div>
-          </a>
-        </li>
-
-        <!-- Producto 7 -->
-        <li class="product-card">
-          <a href="producto-f7-samsung-silver-smile-cheeks.html">
-            <div class="product-media">
-              <img class="lazy" data-src="assets/prod7.jpg" alt="Samsung Silver Smile Cheeks" loading="lazy">
-            </div>
-            <div class="product-info">
-              <h3 class="product-title">Samsung Silver Smile Cheeks</h3>
-              <div class="product-price">
-                <span class="price-discount">€9,99</span>
-                <span class="price-original">€14,99</span>
-              </div>
-            </div>
-          </a>
-        </li>
-
-        <!-- Producto 8 -->
-        <li class="product-card">
-          <a href="producto-f8-iphone-wave-macaron.html">
-            <div class="product-media">
-              <img class="lazy" data-src="assets/prod8.jpg" alt="iPhone Wave Macaron" loading="lazy">
-            </div>
-            <div class="product-info">
-              <h3 class="product-title">iPhone Wave Macaron</h3>
-              <div class="product-price">
-                <span class="price-discount">€9,99</span>
-                <span class="price-original">€14,99</span>
-              </div>
-            </div>
-          </a>
-        </li>
-
-        <!-- Producto 9 -->
-        <li class="product-card">
-          <a href="producto-f9-y2k-batman-spiderman.html">
-            <div class="product-media">
-              <img class="lazy" data-src="assets/prod9.jpg" alt="Y2K Batman Spiderman" loading="lazy">
-            </div>
-            <div class="product-info">
-              <h3 class="product-title">Y2K Batman Spiderman</h3>
-              <div class="product-price">
-                <span class="price-discount">€9,99</span>
-                <span class="price-original">€14,99</span>
-              </div>
-            </div>
-          </a>
-        </li>
-
-        <!-- Producto 10 -->
-        <li class="product-card">
-          <a href="producto-f10-oppo-reno14f-transparente.html">
-            <div class="product-media">
-              <img class="lazy" data-src="assets/prod10.jpg" alt="OPPO Reno14F Transparente" loading="lazy">
-            </div>
-            <div class="product-info">
-              <h3 class="product-title">OPPO Reno14F Transparente</h3>
-              <div class="product-price">
-                <span class="price-discount">€11,99</span>
-                <span class="price-original">€14,99</span>
-              </div>
-            </div>
-          </a>
-        </li>
-
-        <!-- Producto 11 -->
-        <li class="product-card">
-          <a href="producto-f11-soft-case-anime.html">
-            <div class="product-media">
-              <img class="lazy" data-src="assets/prod11.jpg" alt="Soft Case Anime" loading="lazy">
-            </div>
-            <div class="product-info">
-              <h3 class="product-title">Soft Case Anime</h3>
-              <div class="product-price">
-                <span class="price-discount">€9,99</span>
-                <span class="price-original">€14,99</span>
-              </div>
-            </div>
-          </a>
-        </li>
-
-        <!-- Producto 12 -->
-        <li class="product-card">
-          <a href="producto-f12-transparente-logo-batman.html">
-            <div class="product-media">
-              <img class="lazy" data-src="assets/prod12.jpg" alt="Transparente Logo Batman" loading="lazy">
-            </div>
-            <div class="product-info">
-              <h3 class="product-title">Transparente Logo Batman</h3>
-              <div class="product-price">
-                <span class="price-discount">€9,99</span>
-                <span class="price-original">€14,99</span>
-              </div>
-            </div>
-          </a>
-        </li>
-
-        <!-- Producto 13 -->
-        <li class="product-card">
-          <a href="producto-f13-transparente-placa-lujo.html">
-            <div class="product-media">
-              <img class="lazy" data-src="assets/prod13.jpg" alt="Transparente Placa Lujo" loading="lazy">
-            </div>
-            <div class="product-info">
-              <h3 class="product-title">Transparente Placa Lujo</h3>
-              <div class="product-price">
-                <span class="price-discount">€11,99</span>
-                <span class="price-original">€14,99</span>
-              </div>
-            </div>
-          </a>
-        </li>
-
-        <!-- Producto 14 -->
-        <li class="product-card">
-          <a href="producto-xiaomi-redmi-14c-shockproof-case.html">
-            <div class="product-media">
-              <img class="lazy" data-src="assets/prod14.jpg" alt="Xiaomi Redmi 14C Shockproof" loading="lazy">
-            </div>
-            <div class="product-info">
-              <h3 class="product-title">Xiaomi Redmi 14C Shockproof</h3>
-              <div class="product-price">
-                <span class="price-discount">€11,99</span>
-                <span class="price-original">€14,99</span>
-              </div>
-            </div>
-          </a>
-        </li>
-
-        <!-- Producto 15 -->
-        <li class="product-card">
-          <a href="producto-funda-xiaomi-mi-13-ultra.html">
-            <div class="product-media">
-              <img class="lazy" data-src="assets/prod15.jpg" alt="Xiaomi Mi 13 Ultra" loading="lazy">
-            </div>
-            <div class="product-info">
-              <h3 class="product-title">Xiaomi Mi 13 Ultra</h3>
-              <div class="product-price">
-                <span class="price-discount">€12,99</span>
-                <span class="price-original">€16,99</span>
-              </div>
-            </div>
-          </a>
-        </li>
-
-        <!-- Producto 16 -->
-        <li class="product-card">
-          <a href="producto-funda-iphone-15-pro-max.html">
-            <div class="product-media">
-              <img class="lazy" data-src="assets/prod16.jpg" alt="iPhone 15 Pro Max" loading="lazy">
-            </div>
-            <div class="product-info">
-              <h3 class="product-title">iPhone 15 Pro Max</h3>
-              <div class="product-price">
-                <span class="price-discount">€13,99</span>
-                <span class="price-original">€17,99</span>
-              </div>
-            </div>
-          </a>
-        </li>
-
-        <!-- Producto 17 -->
-        <li class="product-card">
-          <a href="producto-funda-samsung-galaxy-s23.html">
-            <div class="product-media">
-              <img class="lazy" data-src="assets/prod17.jpg" alt="Samsung Galaxy S23" loading="lazy">
-            </div>
-            <div class="product-info">
-              <h3 class="product-title">Samsung Galaxy S23</h3>
-              <div class="product-price">
-                <span class="price-discount">€12,99</span>
-                <span class="price-original">€16,99</span>
-              </div>
-            </div>
-          </a>
-        </li>
-
-        <!-- Producto 18 -->
-        <li class="product-card">
-          <a href="producto-funda-oppo-find-x6.html">
-            <div class="product-media">
-              <img class="lazy" data-src="assets/prod18.jpg" alt="OPPO Find X6" loading="lazy">
-            </div>
-            <div class="product-info">
-              <h3 class="product-title">OPPO Find X6</h3>
-              <div class="product-price">
-                <span class="price-discount">€11,99</span>
-                <span class="price-original">€15,99</span>
-              </div>
-            </div>
-          </a>
-        </li>
-
-        <!-- Producto 19 -->
-        <li class="product-card">
-          <a href="producto-funda-iphone-14-pro.html">
-            <div class="product-media">
-              <img class="lazy" data-src="assets/prod19.jpg" alt="iPhone 14 Pro" loading="lazy">
-            </div>
-            <div class="product-info">
-              <h3 class="product-title">iPhone 14 Pro</h3>
-              <div class="product-price">
-                <span class="price-discount">€12,99</span>
-                <span class="price-original">€16,99</span>
-              </div>
-            </div>
-          </a>
-        </li>
-
-        <!-- Producto 20 -->
-        <li class="product-card">
-          <a href="producto-funda-samsung-galaxy-note20.html">
-            <div class="product-media">
-              <img class="lazy" data-src="assets/prod20.jpg" alt="Samsung Galaxy Note20" loading="lazy">
-            </div>
-            <div class="product-info">
-              <h3 class="product-title">Samsung Galaxy Note20</h3>
-              <div class="product-price">
-                <span class="price-discount">€11,99</span>
-                <span class="price-original">€15,99</span>
-              </div>
-            </div>
-          </a>
-        </li>
-
-        <!-- Producto 21 -->
-        <li class="product-card">
-          <a href="producto-funda-xiaomi-redmi-note12.html">
-            <div class="product-media">
-              <img class="lazy" data-src="assets/prod21.jpg" alt="Xiaomi Redmi Note12" loading="lazy">
-            </div>
-            <div class="product-info">
-              <h3 class="product-title">Xiaomi Redmi Note12</h3>
-              <div class="product-price">
-                <span class="price-discount">€10,99</span>
-                <span class="price-original">€14,99</span>
-              </div>
-            </div>
-          </a>
-        </li>
-
-        <!-- Producto 22 -->
-        <li class="product-card">
-          <a href="producto-funda-iphone-se-2023.html">
-            <div class="product-media">
-              <img class="lazy" data-src="assets/prod22.jpg" alt="iPhone SE 2023" loading="lazy">
-            </div>
-            <div class="product-info">
-              <h3 class="product-title">iPhone SE 2023</h3>
-              <div class="product-price">
-                <span class="price-discount">€9,99</span>
-                <span class="price-original">€13,99</span>
-              </div>
-            </div>
-          </a>
-        </li>
-
-        <!-- Producto 23 -->
-        <li class="product-card">
-          <a href="producto-funda-samsung-galaxy-a54.html">
-            <div class="product-media">
-              <img class="lazy" data-src="assets/prod23.jpg" alt="Samsung Galaxy A54" loading="lazy">
-            </div>
-            <div class="product-info">
-              <h3 class="product-title">Samsung Galaxy A54</h3>
-              <div class="product-price">
-                <span class="price-discount">€11,99</span>
-                <span class="price-original">€15,99</span>
-              </div>
-            </div>
-          </a>
-        </li>
-
-      </ul>
+        </div>
     </section>
-  </main>
-
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div>
-        <strong>PrimCoin</strong><br>
-        Fundas y accesorios con estilo.
-      </div>
-      <nav class="footer-nav">
-        <a href="https://primcoin.myshopify.com/" target="_blank">Shopify</a>
-        <a href="#">Contacto</a>
-      </nav>
+    
+    <section class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">¿Por Qué Elegirnos?</h2>
+                <p class="section-subtitle">Ofrecemos la mejor calidad y servicio para nuestros clientes</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <h3 class="feature-title">Envío Rápido</h3>
+                    <p class="feature-description">Entregamos tus productos en 24-48 horas en toda la península</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Garantía de Calidad</h3>
+                    <p class="feature-description">Todos nuestros productos cuentan con garantía del fabricante</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3 class="feature-title">Soporte 24/7</h3>
+                    <p class="feature-description">Nuestro equipo de atención al cliente está disponible siempre</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-undo-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Devoluciones Fáciles</h3>
+                    <p class="feature-description">Política de devolución sin complicaciones en 30 días</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <div class="product-modal" id="product-modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-modal">&times;</span>
+            <div class="modal-product" id="modal-product-content">
+                <!-- El contenido del producto se cargará aquí con JavaScript -->
+            </div>
+        </div>
     </div>
-    <div class="copyright">© <span id="year"></span> PrimCoin — Todos los derechos reservados.</div>
-  </footer>
-
-  <!-- JS -->
-  <script>
-    // Año automático
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Lazy-loading de imágenes
-    (function(){
-      const imgs = document.querySelectorAll('img.lazy');
-      if ('IntersectionObserver' in window) {
-        const io = new IntersectionObserver((entries, obs) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              const img = entry.target;
-              img.src = img.dataset.src;
-              img.classList.remove('lazy');
-              obs.unobserve(img);
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>PRIMCOIN</h3>
+                    <p>Tu tienda de confianza para productos exclusivos y de calidad. Ofrecemos lo mejor en diseño y funcionalidad.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul>
+                        <li><a href="#">Inicio</a></li>
+                        <li><a href="#products">Productos</a></li>
+                        <li><a href="#">Sobre Nosotros</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Categorías</h3>
+                    <ul>
+                        <li><a href="#">Tecnología</a></li>
+                        <li><a href="#">Hogar</a></li>
+                        <li><a href="#">Moda</a></li>
+                        <li><a href="#">Deportes</a></li>
+                        <li><a href="#">Ofertas</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contacto</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Calle Principal 123, Madrid</li>
+                        <li><i class="fas fa-phone"></i> +34 912 345 678</li>
+                        <li><i class="fas fa-envelope"></i> info@primcoin.com</li>
+                        <li><i class="fas fa-clock"></i> Lun-Vie: 9:00-18:00</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2023 PRIMCOIN. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Datos de productos reales de Primcoin
+        const products = [
+            {
+                id: 1,
+                title: "Camiseta Primcoin Premium",
+                price: "29,99€",
+                oldPrice: "39,99€",
+                description: "Camiseta de alta calidad con el logo de Primcoin. Fabricada con algodón 100% orgánico para máxima comodidad y durabilidad.",
+                image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                category: "Ropa",
+                rating: 4.8,
+                features: [
+                    "100% algodón orgánico",
+                    "Logo bordado de alta calidad",
+                    "Disponible en múltiples tallas",
+                    "Resistente a lavados"
+                ],
+                shopifyUrl: "https://primcoin.myshopify.com/products/camiseta-premium"
+            },
+            {
+                id: 2,
+                title: "Gorra Primcoin Edition",
+                price: "24,99€",
+                oldPrice: "",
+                description: "Gorra ajustable con diseño moderno y logo de Primcoin. Perfecta para actividades al aire libre y deportes.",
+                image: "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                category: "Accesorios",
+                rating: 4.5,
+                features: [
+                    "Ajuste perfecto para cualquier cabeza",
+                    "Material transpirable",
+                    "Visera curva clásica",
+                    "Cierre ajustable"
+                ],
+                shopifyUrl: "https://primcoin.myshopify.com/products/gorra-edition"
+            },
+            {
+                id: 3,
+                title: "Taza Primcoin Cerámica",
+                price: "14,99€",
+                oldPrice: "19,99€",
+                description: "Taza de cerámica de alta calidad con diseño exclusivo de Primcoin. Ideal para regalo o para uso personal.",
+                image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                category: "Hogar",
+                rating: 4.9,
+                features: [
+                    "Capacidad: 350ml",
+                    "Apta para lavavajillas y microondas",
+                    "Diseño exclusivo Primcoin",
+                    "Material cerámico de alta calidad"
+                ],
+                shopifyUrl: "https://primcoin.myshopify.com/products/taza-ceramica"
+            },
+            {
+                id: 4,
+                title: "Mochila Primcoin Urban",
+                price: "49,99€",
+                oldPrice: "",
+                description: "Mochila espaciosa con múltiples compartimentos. Diseño moderno y funcional para el día a día.",
+                image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                category: "Accesorios",
+                rating: 4.7,
+                features: [
+                    "Compartimento para portátil hasta 15\"",
+                    "Múltiples bolsillos organizadores",
+                    "Correas acolchadas para mayor comodidad",
+                    "Material resistente al agua"
+                ],
+                shopifyUrl: "https://primcoin.myshopify.com/products/mochila-urban"
+            },
+            {
+                id: 5,
+                title: "Reloj Primcoin Elegance",
+                price: "79,99€",
+                oldPrice: "99,99€",
+                description: "Reloj de pulsera con diseño sofisticado y logo Primcoin. Perfecto para ocasiones formales e informales.",
+                image: "https://images.unsplash.com/photo-1523170335258-f5ed11844a49?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                category: "Accesorios",
+                rating: 4.6,
+                features: [
+                    "Movimiento de cuarzo preciso",
+                    "Correa de cuero genuino",
+                    "Resistente al agua (50m)",
+                    "Caja de acero inoxidable"
+                ],
+                shopifyUrl: "https://primcoin.myshopify.com/products/reloj-elegance"
+            },
+            {
+                id: 6,
+                title: "Auriculares Primcoin Sound",
+                price: "59,99€",
+                oldPrice: "79,99€",
+                description: "Auriculares con cancelación de ruido y sonido de alta calidad. Batería de larga duración.",
+                image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                category: "Tecnología",
+                rating: 4.8,
+                features: [
+                    "Cancelación activa de ruido",
+                    "Hasta 30 horas de batería",
+                    "Conexión Bluetooth 5.0",
+                    "Micrófono incorporado para llamadas"
+                ],
+                shopifyUrl: "https://primcoin.myshopify.com/products/auriculares-sound"
             }
-          });
-        }, { rootMargin: '200px' });
-        imgs.forEach(i => io.observe(i));
-      } else {
-        imgs.forEach(img => img.src = img.dataset.src);
-      }
-    })();
-  </script>
+        ];
+
+        // Cargar productos en la página
+        const productsGrid = document.getElementById('products-grid');
+        
+        products.forEach(product => {
+            const productCard = document.createElement('div');
+            productCard.className = 'product-card';
+            
+            const badge = product.oldPrice ? '<span class="product-badge">Oferta</span>' : '';
+            
+            const stars = generateStars(product.rating);
+            
+            productCard.innerHTML = `
+                ${badge}
+                <div class="product-image">
+                    <img src="${product.image}" alt="${product.title}">
+                </div>
+                <div class="product-info">
+                    <div class="product-category">${product.category}</div>
+                    <h3 class="product-title">${product.title}</h3>
+                    <p class="product-description">${product.description}</p>
+                    <div class="product-price">
+                        <div>
+                            <span class="price">${product.price}</span>
+                            ${product.oldPrice ? `<span class="price-old">${product.oldPrice}</span>` : ''}
+                        </div>
+                        <div class="product-rating">
+                            ${stars}
+                        </div>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn btn-sm btn-secondary view-details" data-id="${product.id}">Ver Detalles</button>
+                        <button class="btn btn-sm buy-now" data-id="${product.id}">Comprar Ahora</button>
+                    </div>
+                </div>
+            `;
+            
+            productsGrid.appendChild(productCard);
+        });
+
+        // Generar estrellas de valoración
+        function generateStars(rating) {
+            let stars = '';
+            const fullStars = Math.floor(rating);
+            const hasHalfStar = rating % 1 >= 0.5;
+            
+            for (let i = 0; i < fullStars; i++) {
+                stars += '<i class="fas fa-star"></i>';
+            }
+            
+            if (hasHalfStar) {
+                stars += '<i class="fas fa-star-half-alt"></i>';
+            }
+            
+            const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+            for (let i = 0; i < emptyStars; i++) {
+                stars += '<i class="far fa-star"></i>';
+            }
+            
+            return stars;
+        }
+
+        // Modal functionality
+        const modal = document.getElementById('product-modal');
+        const closeModal = document.getElementById('close-modal');
+        const modalContent = document.getElementById('modal-product-content');
+        
+        // Abrir modal al hacer clic en "Ver Detalles"
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('view-details') || e.target.classList.contains('buy-now')) {
+                const productId = e.target.getAttribute('data-id');
+                const product = products.find(p => p.id == productId);
+                
+                if (product) {
+                    const stars = generateStars(product.rating);
+                    
+                    modalContent.innerHTML = `
+                        <div class="modal-image">
+                            <img src="${product.image}" alt="${product.title}">
+                        </div>
+                        <div class="modal-details">
+                            <div class="modal-category">${product.category}</div>
+                            <h2 class="modal-title">${product.title}</h2>
+                            <div class="modal-price">${product.price} ${product.oldPrice ? `<span class="price-old">${product.oldPrice}</span>` : ''}</div>
+                            <div class="product-rating">${stars} <span style="color: var(--gray); margin-left: 5px;">${product.rating}/5</span></div>
+                            <p class="modal-description">${product.description}</p>
+                            <div class="modal-features">
+                                <h3>Características:</h3>
+                                <ul>
+                                    ${product.features.map(feature => `<li><i class="fas fa-check"></i> ${feature}</li>`).join('')}
+                                </ul>
+                            </div>
+                            <a href="${product.shopifyUrl}" target="_blank" class="shopify-btn">
+                                <i class="fas fa-shopping-cart"></i> Comprar en Shopify
+                            </a>
+                        </div>
+                    `;
+                    
+                    modal.style.display = 'flex';
+                }
+            }
+        });
+        
+        // Cerrar modal
+        closeModal.addEventListener('click', function() {
+            modal.style.display = 'none';
+        });
+        
+        // Cerrar modal al hacer clic fuera del contenido
+        window.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>
