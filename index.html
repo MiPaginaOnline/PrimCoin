@@ -3,9 +3,385 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PrimCoin — Catálogo</title>
+  <title>PrimCoin — Catálogo de Fundas Premium</title>
   <meta name="description" content="Catálogo estático de fundas y accesorios - versión estática inspirada en primcoin.myshopify.com" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Variables y reset */
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --secondary: #7c3aed;
+      --accent: #f59e0b;
+      --dark: #1e293b;
+      --light: #f8fafc;
+      --gray: #64748b;
+      --gray-light: #e2e8f0;
+      --white: #ffffff;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --radius: 8px;
+      --transition: all 0.3s ease;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--dark);
+      background-color: var(--light);
+    }
+    
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    
+    ul {
+      list-style: none;
+    }
+    
+    img {
+      max-width: 100%;
+      display: block;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Header */
+    .site-header {
+      background-color: var(--white);
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+    }
+    
+    .brand {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .brand::before {
+      content: "🛡️";
+      font-size: 1.5rem;
+    }
+    
+    .main-nav {
+      display: flex;
+      gap: 25px;
+    }
+    
+    .main-nav a {
+      font-weight: 500;
+      padding: 8px 0;
+      position: relative;
+      transition: var(--transition);
+    }
+    
+    .main-nav a:hover {
+      color: var(--primary);
+    }
+    
+    .main-nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--primary);
+      transition: var(--transition);
+    }
+    
+    .main-nav a:hover::after {
+      width: 100%;
+    }
+    
+    /* Hero Section */
+    .hero-banner {
+      position: relative;
+      height: 500px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 60px;
+    }
+    
+    .hero-img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+    }
+    
+    .hero-overlay {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: var(--white);
+      max-width: 800px;
+      padding: 0 20px;
+    }
+    
+    .hero-overlay::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: -1;
+      border-radius: var(--radius);
+    }
+    
+    .hero-overlay h1 {
+      font-size: 2.8rem;
+      margin-bottom: 15px;
+      font-weight: 700;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    
+    .hero-overlay p {
+      font-size: 1.2rem;
+      margin-bottom: 25px;
+      opacity: 0.9;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-weight: 600;
+      text-align: center;
+      cursor: pointer;
+      transition: var(--transition);
+      border: none;
+      font-size: 1rem;
+    }
+    
+    .btn-hero {
+      background-color: var(--accent);
+      color: var(--dark);
+      box-shadow: var(--shadow);
+    }
+    
+    .btn-hero:hover {
+      background-color: #e69008;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    /* Catalog Section */
+    .catalog-section {
+      padding: 40px 0 80px;
+    }
+    
+    .section-title {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 50px;
+      position: relative;
+      color: var(--dark);
+    }
+    
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      margin: 15px auto 0;
+      border-radius: 2px;
+    }
+    
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 30px;
+    }
+    
+    .product-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+    
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .product-link {
+      display: block;
+      height: 100%;
+    }
+    
+    .product-media {
+      position: relative;
+      height: 250px;
+      overflow: hidden;
+      background-color: var(--gray-light);
+    }
+    
+    .product-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+    
+    .product-card:hover .product-media img {
+      transform: scale(1.05);
+    }
+    
+    .product-info {
+      padding: 20px;
+    }
+    
+    .product-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: var(--dark);
+      line-height: 1.4;
+    }
+    
+    .product-price {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .price-discount {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    
+    .price-original {
+      font-size: 0.9rem;
+      color: var(--gray);
+      text-decoration: line-through;
+    }
+    
+    /* Footer */
+    .site-footer {
+      background-color: var(--dark);
+      color: var(--white);
+      padding: 50px 0 20px;
+    }
+    
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 30px;
+    }
+    
+    .footer-inner div:first-child {
+      max-width: 300px;
+    }
+    
+    .footer-inner strong {
+      display: block;
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      color: var(--accent);
+    }
+    
+    .footer-nav {
+      display: flex;
+      gap: 20px;
+    }
+    
+    .footer-nav a {
+      transition: var(--transition);
+    }
+    
+    .footer-nav a:hover {
+      color: var(--accent);
+    }
+    
+    .copyright {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.9rem;
+      color: var(--gray-light);
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header-inner {
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      .hero-overlay h1 {
+        font-size: 2.2rem;
+      }
+      
+      .footer-inner {
+        flex-direction: column;
+        gap: 30px;
+      }
+      
+      .footer-nav {
+        flex-direction: column;
+        gap: 10px;
+      }
+      
+      .product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .hero-banner {
+        height: 400px;
+      }
+      
+      .hero-overlay h1 {
+        font-size: 1.8rem;
+      }
+      
+      .section-title {
+        font-size: 1.8rem;
+      }
+      
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
   <!-- Header -->
@@ -30,7 +406,7 @@
       />
       <div class="hero-overlay">
         <h1>Fundas que Protegen y Estilo que Inspira</h1>
-        <p>Descubre nuestra colección exclusiva</p>
+        <p>Descubre nuestra colección exclusiva de fundas premium para todos los modelos</p>
         <a class="btn btn-hero" href="#catalogo">Ver Catálogo</a>
       </div>
     </section>
@@ -426,11 +802,12 @@
     <div class="container footer-inner">
       <div>
         <strong>PrimCoin</strong>
-        <p>Fundas y accesorios con estilo.</p>
+        <p>Fundas y accesorios con estilo. Protección premium para tu dispositivo.</p>
       </div>
       <nav class="footer-nav">
         <a href="https://primcoin.myshopify.com/" target="_blank">Shopify</a>
         <a href="#">Contacto</a>
+        <a href="#">Política de Privacidad</a>
       </nav>
     </div>
     <div class="copyright">
